@@ -59,3 +59,12 @@ endif;
 
 echo $mensaje ?? "";
 }
+
+function mostrar_nombre($nombre){
+
+    $nombre_1 = str_ireplace("_"," ",$nombre);
+    
+    $nombre_2 = ucwords($nombre_1);
+    
+    return $nombre_2;
+    }

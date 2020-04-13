@@ -49,14 +49,17 @@ while($producto = readdir($carpeta_producto)):
         continue;
 
  $producto_png = str_replace(".png","",$producto);
+ 
+ $nombre=mostrar_nombre($producto_png);
+
 ?>
 
 
                       <div class="col-6">
                           <div class="card bg-warning border border-dark" style="width: 18rem;">
-                              <img src="img/productos/<?= $producto ?>" class="card-img-top" alt="...">
+                              <img class="listado"src="img/productos/<?= $producto ?>" class="card-img-top" alt="<?= $producto_png ?>">
                                <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <h5 class="card-title"><?= $nombre ?></h5>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 <a href="http://localhost/p_web/index.php?seccion=producto&producto=<?=$producto_png?>" class="btn btn-primary">Go somewhere</a>
                                </div>

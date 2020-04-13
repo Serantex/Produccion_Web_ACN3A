@@ -95,3 +95,8 @@ color:black !important;
 .cborde{
 	border: black;
 }
+
+.listado{
+	height: 350px;
+	width: 286px;
+}

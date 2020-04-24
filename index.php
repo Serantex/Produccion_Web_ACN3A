@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <?php
 
-    require_once("config/config.php");
-    require_once("config/arrays.php");
-    require_once("config/funciones.php");
+    include_once("config/config.php");
+    include_once("config/arrays.php");
+    include_once("config/funciones.php");
+    include_once("class/classCategorias.php");
     
+   $seccion = $_GET["seccion"] ?? "home";
 
-    $seccion = $_GET["seccion"] ?? "home";
+   //categorias($_GET["cat"]);
 
 ?>
 <html lang="es">
@@ -17,7 +19,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="fontawesome/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link href="img/icon.ico" rel="icon" type="image/ico" />
+    <link href="img/icon.ico" rel="icon" type="image/ico">
 
 
 </head>

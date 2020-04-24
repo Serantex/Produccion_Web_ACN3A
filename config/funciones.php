@@ -68,3 +68,12 @@ function mostrar_nombre($nombre){
     
     return $nombre_2;
     }
+
+
+
+function categorias($get){
+        header("products.php?seccion=lista_productos&cat=$get");
+    }
+
+ 
+

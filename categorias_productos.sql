@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2020 a las 20:26:19
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Apr 26, 2020 at 11:25 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `categorias_productos`
+-- Database: `categorias_productos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Table structure for table `categorias`
 --
 
 CREATE TABLE `categorias` (
@@ -35,7 +34,7 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Volcado de datos para la tabla `categorias`
+-- Dumping data for table `categorias`
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
@@ -60,7 +59,7 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comentarios`
+-- Table structure for table `comentarios`
 --
 
 CREATE TABLE `comentarios` (
@@ -74,7 +73,7 @@ CREATE TABLE `comentarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Volcado de datos para la tabla `comentarios`
+-- Dumping data for table `comentarios`
 --
 
 INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `producto`, `aprobado`) VALUES
@@ -84,7 +83,42 @@ INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `p
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `id_perfil` int(11) NOT NULL,
+  `perfil` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permisos`
+--
+
+CREATE TABLE `permisos` (
+  `id_permisos` int(11) NOT NULL,
+  `permiso` varchar(50) COLLATE utf8_bin NOT NULL,
+  `codigo` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permisos_perfil`
+--
+
+CREATE TABLE `permisos_perfil` (
+  `id_relpp` int(11) NOT NULL,
+  `id_permisos` int(11) NOT NULL,
+  `id_perfil` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
@@ -100,7 +134,7 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`) VALUES
@@ -121,46 +155,103 @@ INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `precio`,
 (15, 'Jugo Cangrejo', 6, 22, 15, 1, 0, 0, 0),
 (16, 'Bort', 24, NULL, 15, 1, 0, 0, 0);
 
+-- --------------------------------------------------------
+
 --
--- Índices para tablas volcadas
+-- Table structure for table `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_bin NOT NULL,
+  `apellido` varchar(50) COLLATE utf8_bin NOT NULL,
+  `usuario` varchar(50) COLLATE utf8_bin NOT NULL,
+  `clave` varchar(50) COLLATE utf8_bin NOT NULL,
+  `id_perfil` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuario_perfil`
+--
+
+CREATE TABLE `usuario_perfil` (
+  `id_rel` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_perfil` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `categorias`
+-- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indices de la tabla `comentarios`
+-- Indexes for table `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `perfil`
+--
+ALTER TABLE `perfil`
+  ADD PRIMARY KEY (`id_perfil`);
+
+--
+-- Indexes for table `permisos`
+--
+ALTER TABLE `permisos`
+  ADD PRIMARY KEY (`id_permisos`);
+
+--
+-- Indexes for table `permisos_perfil`
+--
+ALTER TABLE `permisos_perfil`
+  ADD PRIMARY KEY (`id_relpp`);
+
+--
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
+-- Indexes for table `usuario_perfil`
+--
+ALTER TABLE `usuario_perfil`
+  ADD PRIMARY KEY (`id_rel`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
+-- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT de la tabla `comentarios`
+-- AUTO_INCREMENT for table `comentarios`
 --
 ALTER TABLE `comentarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;

@@ -7,7 +7,6 @@ $port     = '3306';
 
 try {        
     $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
-    print "EXITO";
 }
 catch (PDOException $e) {
     print "¡Error!: " . $e->getMessage();

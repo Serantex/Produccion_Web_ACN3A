@@ -75,5 +75,10 @@ function categorias($get){
         header("products.php?seccion=lista_productos&cat=$get");
     }
 
- 
+ function cambiar_nombre($nombre){
+
+    $nombre_1 = str_ireplace(" ","_",$nombre);
+
+    return $nombre_1;
+    }
 

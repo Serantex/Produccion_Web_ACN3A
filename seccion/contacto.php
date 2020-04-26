@@ -25,7 +25,7 @@ endif;
             <?php
             if(!empty($_GET["motivo"])):
             $motivos= unserialize($_GET["motivo"]);
-validar($motivos);
+            validar($motivos);
             endif;
 ?>
         </div>
@@ -38,48 +38,47 @@ validar($motivos);
 <form action="config/procesar_contacto.php" method="post">
     <div class="form-row">
         <div class="col-sl-12 col-md-6">
-            <label for="nombre">Nombre</label>
+            <label for="nombre" class="fama">Nombre</label>
             <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
         </div>
         <div class="col-sl-12 col-md-6">
-            <label for="apellido">Apellido</label>
+            <label for="apellido" class="fama">Apellido</label>
             <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
         </div>
         <div class="col-sl-12 col-md-6">
-            <label for="apellido">Telefono</label>
+            <label for="apellido" class="fama">Telefono</label>
             <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
         </div>
     </div>
     <div class="form-row">
         <div class="col-sl-12 col-md-6">
-            <label for="email">Email</label>
+            <label for="email" class="fama">Email</label>
             <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
                 placeholder="Email">
         </div>
     </div>
     <div>
 
-        <label for="comentario">Comentario</label>
+        <label class="fama" for="comentario">Comentario</label>
         <textarea class="form-control" name="comentario" id="comentario" placeholder="Ingresa tu comentario"></textarea>
         <br>
-        <p>AREA DESTINADA</p>
+        <p><span class="fama">AREA DESTINADA</span></p>
         <div class="invalid-feedback">
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="motivo[]" id="Noticias" value="noticias" checked>
-            <label class="form-check-label" for="info">RRHH</label>
+            <label class="form-check-label fama" for="info">RRHH</label>
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="motivo[]" id="Equipos" value="equipos">
-            <label class="form-check-label" for="equipo">VENTAS</label>
+            <label class="form-check-label fama" for="equipo">VENTAS</label>
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="motivo[]" id="Jugadores" value="jugadores">
-            <label class="form-check-label" for="jugador">ATENCION AL CLIENTE</label>
+            <label class="form-check-label fama" for="jugador">ATENCION AL CLIENTE</label>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 </div>
 
-<audio src="sonido/preguntas.mp3" autoplay="true"></audio>

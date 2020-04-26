@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <?php
-
+    include_once("config/mysql-login.php");
     include_once("config/config.php");
     include_once("config/arrays.php");
     include_once("config/funciones.php");
     include_once("class/classCategorias.php");
-    
+    include_once("class/classProductos.php");
+    include_once("class/classComentarios.php");
    $seccion = $_GET["seccion"] ?? "home";
 
-   //categorias($_GET["cat"]);
+   
 
 ?>
 <html lang="es">

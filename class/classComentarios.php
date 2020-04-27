@@ -13,13 +13,22 @@ class Comentario{
       }
 
     function getMostrarClasificacion($id){
-        $rank="SELECT avg(clasificacion) as $total FROM comentarios WHERE producto =$id";
+        $total="SELECT avg(clasificacion) FROM comentarios WHERE producto =$id";
         return $total;
     } 
 
-    function setComentario($ip,$email,$comentario,$rank,$id_producto){
-        $comenta="INSERT INTO comentarios (mail,ip,comentario,clasificacion,producto) VALUES ($email,$ip,$comentario,$rank,$id_producto)"; 
-        exec($comenta);
+    function setComentario($email,$ip,$comentario,$ranking,$id_producto){
+        $comenta="INSERT INTO comentarios (mail,ip,comentario,clasificacion,producto) VALUES (:email,:ip,:comentario,:ranking,:id_producto)"; 
+        $comenta = $this->con->prepare($comenta);
+
+        $comenta->bindParam(':email',$email,PDO::PARAM_STR, 20);
+        $comenta->bindParam(':ip',$ip,PDO::PARAM_STR, 20);
+        $comenta->bindParam(':comentario',$comentario,PDO::PARAM_STR,300);
+        $comenta->bindParam(':ranking',$ranking,PDO::PARAM_INT,11);
+        $comenta->bindParam(':id_producto',$id_producto,PDO::PARAM_INT,11);
+
+        $comenta->execute();
+        //exec($comenta);
     }
 
 }

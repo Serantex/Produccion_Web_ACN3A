@@ -86,7 +86,7 @@
                                <div class="card-body">
                                 <h5 class="card-title"><?= $producto_filtrado["nombre"] ?></h5>
                                 <p class="card-text">$<?= $producto_filtrado["precio"] ?></p>
-                                <a href="http://localhost/p_web/index.php?seccion=producto&producto=<?=$nombre_filtrado?>" class="btn btn-primary">IR AL PRODUCTO</a>
+                                <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre_filtrado?>" class="btn btn-primary">IR AL PRODUCTO</a>
                                </div>
                           </div>
                     </div>
@@ -102,7 +102,7 @@
                                <div class="card-body">
                                   <h5 class="card-title"><?= $product["nombre"] ?></h5>
                                   <p class="card-text">$<?= $product["precio"] ?></p>
-                                  <a href="http://localhost/p_web/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
+                                  <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
                               </div>
                           </div>
                       </div>
@@ -121,7 +121,7 @@
                                <div class="card-body">
                                   <h5 class="card-title"><?= $productos_filtrado["nombre"] ?></h5>
                                   <p class="card-text">$<?= $productos_filtrado["precio"] ?></p>
-                                  <a href="http://localhost/p_web/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
+                                  <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
                                </div>
                           </div>
                 </div>

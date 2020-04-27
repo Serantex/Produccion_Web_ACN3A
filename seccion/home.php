@@ -15,6 +15,7 @@ foreach($nov->getNovedades() as $producto){
                 <img src="img/productos/<?=$nombre?>.png" class="card-img-top" alt="...">
                 <div class="card-body"> 
                    <h5 class="card-title"><?=$producto["nombre"];?></h5>
+                   <p class="card-text"><?= $producto["descripcion"] ?></p>
                     <p class="card-text">$<?=$producto["precio"];?></p>
                     <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
                 </div>

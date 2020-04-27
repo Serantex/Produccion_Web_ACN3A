@@ -47,7 +47,7 @@ foreach($product->getProducto($nombre_filtrado) as $articulo){
                                     <form action="config/procesar_comentarios.php" method="post">
                                      <div class="form">
                                          <div class="form-row">
-                                            <input type="hidden" name="ip" value="<?=$_SERVER['HTTP_CLIENT_IP'];?>">
+                                            <input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>">
                                         </div>
                                         <div class="form-row">
                                              <input type="hidden" name="id_producto" value="<?=$articulo["id"]?>">

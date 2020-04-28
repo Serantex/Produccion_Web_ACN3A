@@ -24,8 +24,13 @@ foreach($product->getProducto($nombre_filtrado) as $articulo){
                 </div>
                 <div>
                     <p><span class="fama">$<?=$articulo["precio"]?></span></p>
-                    <p><span class="fama">clasificacion:</span></p>
+                    <p><span class="fama">Descripción:</span></p>
                     <p class="fama"><?=$articulo["descripcion"]?></p>
+                    <p><span class="fama">Clasificación:</span></p>
+                    <?php 
+                           $clasificacion =  $com->getMostrarClasificacion($articulo["id"])
+                    ?>
+                     <p class="fama"><?=$clasificacion?></p>
                 </div>
                 <div class="row">
 

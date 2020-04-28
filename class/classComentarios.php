@@ -13,8 +13,12 @@ class Comentario{
       }
 
     function getMostrarClasificacion($id){
-        $total="SELECT avg(clasificacion) FROM comentarios WHERE producto =$id";
-        return $total;
+        $com="SELECT AVG(clasificacion) AS 'clasificacion' FROM comentarios WHERE producto = $id";
+        $stmt = $this->con->prepare($com);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $clasificacion = $row['clasificacion'];
+        return $clasificacion;
     } 
 
     function getComentarioLastUpdated($id){

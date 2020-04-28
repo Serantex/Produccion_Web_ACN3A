@@ -17,7 +17,39 @@ class Comentario{
         return $total;
     } 
 
-    function setComentario($email,$ip,$comentario,$ranking,$id_producto){
+    function getComentarioLastUpdated($id){
+        $com="SELECT * FROM comentarios WHERE producto =$id";
+        return $this->con->query($com, PDO::FETCH_ASSOC);
+    }
+
+    function validateUpdateComment($id){
+        $isValid = false;
+        $comentarios = $this->getComentarioLastUpdated($id);
+        $ips = array();
+        $lastUpdated = array();
+        $date = date('Y-m-d');
+       
+        foreach ($comentarios as $user_ip){
+            $ips=  array_push($ips, $user_ip['ip']);
+        }
+
+        foreach ($comentarios as $last_updated){
+            $lastUpdated=  array_push($lastUpdated, $last_updated['last_updated']);
+        }
+
+        foreach ($lastUpdated as $value){
+            $timeRange = $date - $value;
+            if($timeRange < 24) {
+                $isValid = false;
+            }
+            else {
+                $isValid = true;
+            }
+        }
+        return $isValid;
+    }
+
+    function setComentario($email,$ip,$comentario,$ranking,$id_producto){   
         $comenta="INSERT INTO comentarios (mail,ip,comentario,clasificacion,producto) VALUES (:email,:ip,:comentario,:ranking,:id_producto)"; 
         $comenta = $this->con->prepare($comenta);
 

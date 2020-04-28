@@ -22,31 +22,21 @@ class Comentario{
         return $this->con->query($com, PDO::FETCH_ASSOC);
     }
 
-    function validateUpdateComment($id){
-        $isValid = false;
+    function validateUpdateComment($id, $current_ip){
         $comentarios = $this->getComentarioLastUpdated($id);
-        $ips = array();
-        $lastUpdated = array();
         $date = date('Y-m-d');
-       
-        foreach ($comentarios as $user_ip){
-            $ips=  array_push($ips, $user_ip['ip']);
-        }
+        $isValid = true;
 
-        foreach ($comentarios as $last_updated){
-            $lastUpdated=  array_push($lastUpdated, $last_updated['last_updated']);
-        }
+        foreach ($comentarios as $comentario) {
+            $ip = $comentario['ip'];
+            $fecha = strtotime($comentario['last_updated']);
 
-        foreach ($lastUpdated as $value){
-            $timeRange = $date - $value;
-            if($timeRange < 24) {
-                $isValid = false;
-            }
-            else {
-                $isValid = true;
-            }
-        }
-        return $isValid;
+            if($fecha != $date && $ip == $current_ip) {
+            $isValid = false;
+        break;
+    }
+  }
+  return $isValid;
     }
 
     function setComentario($email,$ip,$comentario,$ranking,$id_producto){   

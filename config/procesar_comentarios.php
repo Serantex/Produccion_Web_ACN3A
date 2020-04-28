@@ -13,7 +13,7 @@ $comentario=$_POST["comentario"];
 $ranking=$_POST["rank"];
 $id_producto=$_POST["id_producto"];
 $producto=$_POST["producto"];
-$isValid = $commentary->validateUpdateComment($id_producto);
+$isValid = $commentary->validateUpdateComment($id_producto, $ip);
 if((empty($ip)||empty($email)||empty($ranking))){
     header("Location:../index.php?seccion=producto&producto=$producto&error=error_envio_datos"); 
 

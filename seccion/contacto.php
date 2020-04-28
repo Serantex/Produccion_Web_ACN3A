@@ -46,8 +46,11 @@ endif;
             <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
         </div>
         <div class="col-sl-12 col-md-6">
-            <label for="apellido" class="fama">Telefono</label>
-            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido">
+            <label for="telefono" class="fama">Telefono</label>
+            <input type="text" class="form-control" name="telefono" id="telefono" placeholder="telefono">
+        </div>
+         <div class="form-row">
+            <input type="hidden" name="ip" value="<?=$_SERVER['REMOTE_ADDR'];?>">
         </div>
     </div>
     <div class="form-row">
@@ -66,16 +69,16 @@ endif;
         <div class="invalid-feedback">
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" name="motivo[]" id="Noticias" value="noticias" checked>
-            <label class="form-check-label fama" for="info">RRHH</label>
+            <input type="checkbox" class="form-check-input" name="motivo[]" id="RRHH" value="RRHH">
+            <label class="form-check-label fama" for="RRHH">RRHH</label>
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" name="motivo[]" id="Equipos" value="equipos">
-            <label class="form-check-label fama" for="equipo">VENTAS</label>
+            <input type="checkbox" class="form-check-input" name="motivo[]" id="VENTAS" value="VENTAS">
+            <label class="form-check-label fama" for="VENTAS">VENTAS</label>
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" name="motivo[]" id="Jugadores" value="jugadores">
-            <label class="form-check-label fama" for="jugador">ATENCION AL CLIENTE</label>
+            <input type="checkbox" class="form-check-input" name="motivo[]" id="ATENCION" value="ATENCION AL CLIENTE">
+            <label class="form-check-label fama" for="ATENCION">ATENCION AL CLIENTE</label>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>

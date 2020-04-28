@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2020 a las 06:51:34
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Host: 127.0.0.1
+-- Generation Time: Apr 29, 2020 at 12:59 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `categorias_productos`
+-- Database: `categorias_productos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Table structure for table `categorias`
 --
 
 CREATE TABLE `categorias` (
@@ -35,7 +34,7 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Volcado de datos para la tabla `categorias`
+-- Dumping data for table `categorias`
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
@@ -60,7 +59,7 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comentarios`
+-- Table structure for table `comentarios`
 --
 
 CREATE TABLE `comentarios` (
@@ -75,17 +74,45 @@ CREATE TABLE `comentarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Volcado de datos para la tabla `comentarios`
+-- Dumping data for table `comentarios`
 --
 
 INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `producto`, `last_updated`, `aprobado`) VALUES
 (3, 'mica@example.com', '::1', 'asdfgfcgvhbjn', 2, 1, '2020-04-27', 1),
-(4, 'lagana.mcl@gmail.com', '::1', 'rdyjtdtfg', 5, 1, '2020-04-27', 0);
+(4, 'lagana.mcl@gmail.com', '::1', 'rdyjtdtfg', 5, 1, '2020-04-27', 0),
+(5, 'promociones@mailclubcruzverde.', '::1', 'test1', 1, 1, '2020-04-28', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perfil`
+-- Table structure for table `contactos`
+--
+
+CREATE TABLE `contactos` (
+  `id_contacto` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_bin NOT NULL,
+  `apellido` varchar(100) COLLATE utf8_bin NOT NULL,
+  `telefono` int(11) NOT NULL,
+  `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `comentario` varchar(100) COLLATE utf8_bin NOT NULL,
+  `motivo` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `contactos`
+--
+
+INSERT INTO `contactos` (`id_contacto`, `nombre`, `apellido`, `telefono`, `email`, `comentario`, `motivo`) VALUES
+(1, 'C&A', 'Training', 323, 'afonseca@devsutd.com', '0', '0'),
+(2, 'C&A', 'Training', 222, 'afonseca@devsutd.com', 'fckl', 'N;'),
+(3, 'C&A21323e23', 'Trainingdfd', 0, 'afonseca@devsutd.com', 'd', 'a:2:{i:0;s:6:\"VENTAS\";i:1;s:19:\"ATENCION AL CLIENTE\";}'),
+(4, 'C&A', 'Training', 21, 'afonseca@devsutd.com', 'fdaf', 'VENTAS'),
+(5, 'C&A', 'Training', 3232, 'afonseca@devsutd.com', 'dsa', 'VENTAS,ATENCION AL CLIENTE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perfil`
 --
 
 CREATE TABLE `perfil` (
@@ -96,7 +123,7 @@ CREATE TABLE `perfil` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
+-- Table structure for table `permisos`
 --
 
 CREATE TABLE `permisos` (
@@ -108,7 +135,7 @@ CREATE TABLE `permisos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos_perfil`
+-- Table structure for table `permisos_perfil`
 --
 
 CREATE TABLE `permisos_perfil` (
@@ -120,7 +147,7 @@ CREATE TABLE `permisos_perfil` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Table structure for table `productos`
 --
 
 CREATE TABLE `productos` (
@@ -137,7 +164,7 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Dumping data for table `productos`
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`) VALUES
@@ -182,7 +209,7 @@ INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripc
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -197,7 +224,7 @@ CREATE TABLE `usuarios` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario_perfil`
+-- Table structure for table `usuario_perfil`
 --
 
 CREATE TABLE `usuario_perfil` (
@@ -207,75 +234,87 @@ CREATE TABLE `usuario_perfil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `categorias`
+-- Indexes for table `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indices de la tabla `comentarios`
+-- Indexes for table `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `perfil`
+-- Indexes for table `contactos`
+--
+ALTER TABLE `contactos`
+  ADD PRIMARY KEY (`id_contacto`);
+
+--
+-- Indexes for table `perfil`
 --
 ALTER TABLE `perfil`
   ADD PRIMARY KEY (`id_perfil`);
 
 --
--- Indices de la tabla `permisos`
+-- Indexes for table `permisos`
 --
 ALTER TABLE `permisos`
   ADD PRIMARY KEY (`id_permisos`);
 
 --
--- Indices de la tabla `permisos_perfil`
+-- Indexes for table `permisos_perfil`
 --
 ALTER TABLE `permisos_perfil`
   ADD PRIMARY KEY (`id_relpp`);
 
 --
--- Indices de la tabla `productos`
+-- Indexes for table `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- Indices de la tabla `usuario_perfil`
+-- Indexes for table `usuario_perfil`
 --
 ALTER TABLE `usuario_perfil`
   ADD PRIMARY KEY (`id_rel`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
+-- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT de la tabla `comentarios`
+-- AUTO_INCREMENT for table `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `productos`
+-- AUTO_INCREMENT for table `contactos`
+--
+ALTER TABLE `contactos`
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2020 a las 02:02:18
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.1.32
+-- Tiempo de generación: 28-04-2020 a las 06:51:34
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -70,6 +70,7 @@ CREATE TABLE `comentarios` (
   `comentario` varchar(300) COLLATE utf8mb4_bin NOT NULL,
   `clasificacion` int(11) NOT NULL,
   `producto` int(11) NOT NULL,
+  `last_updated` date NOT NULL DEFAULT current_timestamp(),
   `aprobado` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
@@ -77,9 +78,9 @@ CREATE TABLE `comentarios` (
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `producto`, `aprobado`) VALUES
-(1, 'test@mail.com', '000.000.001', 'muy buen producto', 5, 1, 1),
-(2, 'test2@mail.com', '000.000.002', 'este producto es muy malo', 1, 1, 0);
+INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `producto`, `last_updated`, `aprobado`) VALUES
+(3, 'mica@example.com', '::1', 'asdfgfcgvhbjn', 2, 1, '2020-04-27', 1),
+(4, 'lagana.mcl@gmail.com', '::1', 'rdyjtdtfg', 5, 1, '2020-04-27', 0);
 
 -- --------------------------------------------------------
 
@@ -271,7 +272,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`

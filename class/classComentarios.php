@@ -13,13 +13,17 @@ class Comentario{
       }
 
     function getMostrarClasificacion($id){
-        $total="SELECT avg(clasificacion) FROM comentarios WHERE producto =$id";
-        return $total;
+        $com="SELECT AVG(clasificacion) AS 'clasificacion' FROM comentarios WHERE producto = $id and aprobado=1";
+        $stmt = $this->con->prepare($com);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $clasificacion = $row['clasificacion'];
+        return $clasificacion;
     } 
 
     function getComentarioLastUpdated($id){
         $com="SELECT * FROM comentarios WHERE producto =$id";
-        return $this->con->query($com, PDO::FETCH_ASSOC);
+        return $this->con->query($com);
     }
 
     function validateUpdateComment($id, $current_ip){
@@ -47,7 +51,7 @@ class Comentario{
         $comenta->bindParam(':email',$email,PDO::PARAM_STR, 20);
         $comenta->bindParam(':ip',$ip,PDO::PARAM_STR, 20);
         $comenta->bindParam(':comentario',$comentario,PDO::PARAM_STR,300);
-        $comenta->bindParam(':ranking',$ranking,PDO::PARAM_INT,11);
+        $comenta->bindParam(':ranking',$ranking,PDO::PARAM_INT,11); 
         $comenta->bindParam(':id_producto',$id_producto,PDO::PARAM_INT,11);
 
         $comenta->execute();

@@ -1,5 +1,5 @@
 <div class="container">  
-    <h2>NOVEDADES</h2>
+    <h2 class="fama">NOVEDADES</h2>
     <div class="row img">
 <?php
 
@@ -12,7 +12,7 @@ foreach($nov->getNovedades() as $producto){
 ?>
         <div class="col-4">
             <div class="card bg-warning border border-dark" style="width: 18rem;">
-                <img src="img/productos/<?=$nombre?>.png" class="card-img-top" alt="...">
+                <img src="img/productos/<?=$nombre?>.png" alt=<?=$producto["nombre"]?>>
                 <div class="card-body"> 
                    <h5 class="card-title"><?=$producto["nombre"];?></h5>
                    <p class="card-text"><?= $producto["descripcion"] ?></p>

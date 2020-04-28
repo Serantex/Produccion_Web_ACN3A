@@ -4,7 +4,6 @@ $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $use
 $producto = $_GET["producto"];
 
 $product = new Producto($con);
-
 $com=new Comentario($con);
 
 $nombre_filtrado=mostrar_nombre($producto);
@@ -15,7 +14,7 @@ foreach($product->getProducto($nombre_filtrado) as $articulo){
     <div class="row">
         <div class="col-4">
                 <div class="row">
-                    <img src="img/productos/<?=$producto?>.png" alt="">
+                    <img src="img/productos/<?=$producto?>.png" alt="<?=$articulo["nombre"]?>">
                 </div>
         </div>
         <div class="col-8">
@@ -24,13 +23,13 @@ foreach($product->getProducto($nombre_filtrado) as $articulo){
                 </div>
                 <div>
                     <p><span class="fama">$<?=$articulo["precio"]?></span></p>
-                    <p><span class="fama">clasificacion:</span></p>
+                    <p class="fama"><span>clasificacion:</span> <?=$com->getMostrarClasificacion($articulo['id'])?>★</p>
                     <p class="fama"><?=$articulo["descripcion"]?></p>
                 </div>
                 <div class="row">
 
                     <div>
-                        <h3 class="fama">Comentarios del Producto</h3>
+                        <h3 class="fama">Comentarios del Product</h3>
                         <hr>
                         <?php 
                             foreach($com->getMostrarComentario($articulo["id"]) as $comentario){

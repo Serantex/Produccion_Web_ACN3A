@@ -24,14 +24,15 @@ class Comentario{
 
     function validateUpdateComment($id, $current_ip){
         $comentarios = $this->getComentarioLastUpdated($id);
-        $date = date('Y-m-d');
+        $date = strtotime(date('Y-m-d'));
         $isValid = true;
 
         foreach ($comentarios as $comentario) {
             $ip = $comentario['ip'];
             $fecha = strtotime($comentario['last_updated']);
+            $timeRange = $date - $fecha;
 
-            if($fecha != $date && $ip == $current_ip) {
+            if($timeRange < 86400 && $ip == $current_ip) {
             $isValid = false;
         break;
     }
@@ -50,7 +51,6 @@ class Comentario{
         $comenta->bindParam(':id_producto',$id_producto,PDO::PARAM_INT,11);
 
         $comenta->execute();
-        //exec($comenta);
     }
 
 }

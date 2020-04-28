@@ -2,10 +2,17 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
+<<<<<<< HEAD
 -- Host: 127.0.0.1
 -- Generation Time: Apr 29, 2020 at 12:59 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
+=======
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 29-04-2020 a las 00:02:56
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
+>>>>>>> f5b4e3773fcb374e68405c409b9a0313a0fbfb25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,10 +54,10 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
 (7, 'Alimentos', 1),
 (8, 'Dulces', 7),
 (9, 'Salados', 7),
-(10, 'Muniecos', 1),
+(10, 'Juguetes', 1),
 (11, 'Stacy Malibu', 10),
 (12, 'Fonzo', 10),
-(13, 'Otros Muniecos', 10),
+(13, 'Otros Juguetes', 10),
 (21, 'Otros Disfraces', 3),
 (22, 'Sin alcohol', 6),
 (23, 'Con alcohol', 6),
@@ -80,7 +87,11 @@ CREATE TABLE `comentarios` (
 INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `producto`, `last_updated`, `aprobado`) VALUES
 (3, 'mica@example.com', '::1', 'asdfgfcgvhbjn', 2, 1, '2020-04-27', 1),
 (4, 'lagana.mcl@gmail.com', '::1', 'rdyjtdtfg', 5, 1, '2020-04-27', 0),
+<<<<<<< HEAD
 (5, 'promociones@mailclubcruzverde.', '::1', 'test1', 1, 1, '2020-04-28', 0);
+=======
+(5, '2@d', '::1', 'sdvsdv', 1, 1, '2020-04-28', 0);
+>>>>>>> f5b4e3773fcb374e68405c409b9a0313a0fbfb25
 
 -- --------------------------------------------------------
 
@@ -168,7 +179,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`) VALUES
-(1, 'Acido Sulfurico', 24, NULL, 'Ideal para calmar la sed', 10.5, 1, 0, 0, 1),
+(1, 'Acido Sulfurico', 24, NULL, 'Ideal para calmar la sed', 10.5, 1, 0, 0, 0),
 (2, 'Aprieta Y Traga', 7, 9, 'Salchichón completo del tío Lardo!', 10.5, 1, 0, 0, 1),
 (3, 'Rosquilla', 7, 8, 'La rosca prohibida', 1, 1, 0, 0, 1),
 (4, 'Duff', 6, 23, 'Mmmm Cerveza!', 545, 1, 0, 0, 1),
@@ -185,26 +196,26 @@ INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripc
 (15, 'Jugo Cangrejo', 6, 22, 'De cangrejos?!, Si de cangrejos', 15, 1, 0, 0, 0),
 (16, 'Bort', 24, NULL, 'Necesitamos mas matriculas con el nombre de Bort', 15, 1, 0, 0, 0),
 (17, 'El Homeromovil', 24, NULL, 'Si, esta moustrocidad cuesta eso', 82000, 1, 0, 0, 1),
-(18, 'Cereal', 1, 7, 'Viene con una rueda de metal', 2, 3, 0, 0, 0),
-(19, 'Cho Cho', 24, NULL, 'La maquinita tu eres el elegido', 1, 4, 0, 0, 0),
+(18, 'Cereal', 7, 8, 'Viene con una rueda de metal', 2, 1, 0, 0, 0),
+(19, 'Cho Cho', 24, NULL, 'La maquinita tu eres el elegido', 1, 1, 0, 0, 0),
 (20, 'Conejo Pepito', 10, 13, 'Incluye la cabeza arrancada por Bart', 5, 1, 0, 0, 1),
 (21, 'Escopeta', 24, NULL, 'Incluye el modo callejera', 10, 1, 0, 0, 1),
-(22, 'Globo', 5, NULL, 'El profesor Smithers y sus pompotas', 24, 1, 0, 0, 1),
+(22, 'Globo', 24, NULL, 'El profesor Smithers y sus pompotas', 24, 1, 0, 0, 1),
 (23, 'Jarabe', 2, NULL, 'Puede caudar alusinaciones', 18, 1, 0, 0, 1),
 (24, 'Juego', 10, 13, 'Bonestorm, el juego mas violento', 50, 1, 0, 0, 0),
 (25, 'Llamarada Moe', 6, 23, 'El ingrediente secreto es jarabe para la tos', 25, 1, 0, 0, 1),
-(26, 'Mano Mono', 24, NULL, 'Mano de los deseos, ideal para la paz mundial', 80, 1, 0, 0, 1),
+(26, 'Mano Mono', 24, NULL, 'Mano de los deseos, ideal para la paz mundial', 80, 1, 0, 0, 0),
 (27, 'Martillo', 24, NULL, 'Martillo electronico creado por Tomas Edison', 36, 1, 0, 0, 1),
 (28, 'Papas', 7, 9, 'Sabrosas papas fritas', 3, 1, 0, 0, 1),
 (29, 'Salchicha', 7, 9, 'Se cayo al suelo, pero sera nuestro secreto', 1, 1, 0, 0, 1),
-(30, 'Sillon baño', 24, NULL, 'Super comodo para ir al baño', 200, 1, 0, 0, 1),
-(31, 'Focusyn', 2, NULL, 'Me siento feliz tomo mi Focusyn', 57, 2, 0, 0, 1),
-(32, 'Videogame 2', 10, 13, 'Operacion rescate', 54, 4, 0, 0, 0),
-(33, 'Fonzo', 10, 12, 'Dame un abrazo', 150, 12, 0, 0, 1),
-(34, 'Disfraz Bartman', 3, 4, 'Salvando la ciudad de Sprinfield', 234, 2, 0, 0, 1),
-(35, 'Disfraz Hombre Radioactivo', 3, 4, 'Soy el hombre radioactivo', 263, 2, 0, 0, 0),
-(36, 'Disfraz Lisa', 3, 5, 'Premio por no tener ayuda de los padres', 76, 2, 0, 0, 1),
-(37, 'Stacy Vaquera', 10, 11, 'Olee!', 70, 2, 0, 0, 1);
+(30, 'Sillon banio', 24, NULL, 'Super comodo para ir al baño', 200, 1, 0, 0, 1),
+(31, 'Focusyn', 2, NULL, 'Me siento feliz tomo mi Focusyn', 57, 1, 0, 0, 1),
+(32, 'Videogame 2', 10, 13, 'Operacion rescate', 54, 1, 0, 0, 0),
+(33, 'Fonzo', 10, 12, 'Dame un abrazo', 150, 1, 0, 0, 1),
+(34, 'Disfraz Bartman', 3, 4, 'Salvando la ciudad de Sprinfield', 234, 1, 0, 0, 1),
+(35, 'Disfraz Hombre Radioactivo', 3, 4, 'Soy el hombre radioactivo', 263, 1, 0, 0, 0),
+(36, 'Disfraz Lisa', 3, 5, 'Premio por no tener ayuda de los padres', 76, 1, 0, 0, 1),
+(37, 'Stacy Vaquera', 10, 11, 'Olee!', 70, 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -306,12 +317,15 @@ ALTER TABLE `categorias`
 --
 ALTER TABLE `comentarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+<<<<<<< HEAD
 
 --
 -- AUTO_INCREMENT for table `contactos`
 --
 ALTER TABLE `contactos`
   MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+=======
+>>>>>>> f5b4e3773fcb374e68405c409b9a0313a0fbfb25
 
 --
 -- AUTO_INCREMENT for table `productos`

@@ -24,14 +24,18 @@ class Producto{
         }
         
         function getFiltradoCategorias($cat){
-            $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1";
+            $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat AND stock=1";
             return $this->con->query($filtro, PDO::FETCH_ASSOC);
         }
 
         function getFiltrado($filter, $cat){
-            if($cat=1){
+            if($cat==1){
                 if(!empty($filter)){
                     switch($filter){
+                     case 'NOV':
+                        $filtro="SELECT * FROM productos WHERE stock=1 AND destacado=1";
+                        return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                        break;
                     case 'ZA':
                         $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY nombre DESC";
                         return $this->con->query($filtro, PDO::FETCH_ASSOC);
@@ -52,11 +56,15 @@ class Producto{
             }else{
                 if(!empty($filter)){
                     switch($filter){
+                 case 'NOV':
+                     $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat AND stock=1 AND destacado=1";
+                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                     break;
                 case 'ZA':
-                  $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY nombre DESC";
+                  $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat AND stock=1 ORDER BY nombre DESC";
                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
                      break;
-               case 'AZ':
+                case 'AZ':
                     $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY nombre ASC";
                      return $this->con->query($filtro, PDO::FETCH_ASSOC);
                     break;

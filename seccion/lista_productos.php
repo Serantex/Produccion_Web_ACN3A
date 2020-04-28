@@ -47,6 +47,11 @@
                       </div>
 
                       <div class="form-check form-check-inline">
+                        <input class="form-check-input lista" type="radio" name="filtro" id="NOV" value="NOV">
+                        <label class="form-check-label fama" for="NOV">NOVEDADES</label>
+                      </div>
+
+                      <div class="form-check form-check-inline">
                         <input class="form-check-input lista" type="radio" name="filtro" id="AZ" value="AZ">
                         <label class="form-check-label fama" for="AZ">A>Z</label>
                       </div>

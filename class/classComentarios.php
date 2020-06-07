@@ -57,4 +57,25 @@ class Comentario{
         $comenta->execute();
     }
 
+    function getMostrarComentarios(){
+        $com="SELECT * FROM comentarios";
+          return $this->con->query($com, PDO::FETCH_ASSOC);
+      }
+
+      function ComentarioEdit($id){
+        $com="SELECT * FROM comentarios where id=$id";
+          return $this->con->query($com, PDO::FETCH_ASSOC);
+      }
+
+    function aprobar($id){
+        $comenta="UPDATE  comentarios SET aprobado='1' WHERE id=$id"; 
+        $comenta = $this->con->prepare($comenta);
+        $comenta->execute();
+    }  
+
+    function desaprobar($id){
+        $comenta="UPDATE  comentarios SET aprobado='0' WHERE id=$id";
+        $comenta = $this->con->prepare($comenta);
+        $comenta->execute();
+    }
 }

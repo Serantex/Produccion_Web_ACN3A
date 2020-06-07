@@ -82,3 +82,8 @@ function categorias($get){
     return $nombre_1;
     }
 
+    function cheked($chek){
+        if($chek==1){
+            return "checked";
+        }
+    }

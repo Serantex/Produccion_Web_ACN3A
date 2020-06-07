@@ -12,7 +12,15 @@ function __construct($con){
          return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 
+    function getCategoria(){
+        $sql = "SELECT * FROM categorias";
+         return $this->con->query($sql, PDO::FETCH_ASSOC);
+    }
 
+    function getNombreSubCat($id){
+        $sql = "SELECT nombre FROM categorias WHERE id_categoria=$id";
+         return $this->con->query($sql, PDO::FETCH_ASSOC);
+    }
 
 }
 

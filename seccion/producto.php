@@ -38,10 +38,11 @@ foreach($product->getProducto($nombre_filtrado) as $articulo){
                             
                             <p class="fama"><?=$comentario["mail"];?> dijo : <?=$comentario["comentario"];?> CLASIFICO:<STRONG><?=$comentario["clasificacion"];?>★</STRONG> </p>
                            <hr>
-                            </div>
+                            
                         <?php
                              }
                         ?>
+                        </div>
                             <div>
                                 <h4 class="fama">ENVIA TU COMENTARIO</h4>
                                     <form action="config/procesar_comentarios.php" method="post">

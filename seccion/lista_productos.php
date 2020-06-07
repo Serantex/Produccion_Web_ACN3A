@@ -92,7 +92,7 @@
                                 <h5 class="card-title"><?= $producto_filtrado["nombre"] ?></h5>
                                 <p class="card-text"><?= $producto_filtrado["descripcion"] ?></p>
                                 <p class="card-text">$<?= $producto_filtrado["precio"] ?></p>
-                                <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre_filtrado?>" class="btn btn-primary">IR AL PRODUCTO</a>
+                                <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre_filtrado?>" class="btn btn-primary centro">IR AL PRODUCTO</a>
                                </div>
                           </div>
                     </div>
@@ -109,7 +109,7 @@
                                   <h5 class="card-title"><?= $product["nombre"] ?></h5>
                                   <p class="card-text"><?= $product["descripcion"] ?></p>
                                   <p class="card-text">$<?= $product["precio"] ?></p>
-                                  <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
+                                  <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary centro">IR AL PRODUCTO</a>
                               </div>
                           </div>
                       </div>

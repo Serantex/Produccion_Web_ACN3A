@@ -18,6 +18,11 @@ class Producto{
             return $this->con->query($producto, PDO::FETCH_ASSOC);
         }
 
+        function getProducto_lista(){
+            $producto="SELECT * FROM productos";
+            return $this->con->query($producto, PDO::FETCH_ASSOC);
+        }
+
         function getProducto($name){
             $product="SELECT * FROM productos WHERE nombre='$name' and stock=1";
             return $this->con->query($product, PDO::FETCH_ASSOC);
@@ -66,8 +71,8 @@ class Producto{
                      break;
                 case 'AZ':
                     $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY nombre ASC";
-                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                    break;
+                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                break;
                 case 'MIN':
                     $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY precio ASC";
                      return $this->con->query($filtro, PDO::FETCH_ASSOC);
@@ -78,9 +83,15 @@ class Producto{
                 }}
             }
         }
-
         
-
+        function getProducto_detalle($id){
+            $producto="SELECT * FROM productos WHERE id=$id";
+            return $this->con->query($producto, PDO::FETCH_ASSOC);
+        }
         
-
-}
+        function getProductoEdit($name){
+            $product="SELECT * FROM productos WHERE nombre='$name'";
+            return $this->con->query($product, PDO::FETCH_ASSOC);
+        }
+        
+    }

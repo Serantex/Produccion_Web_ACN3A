@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
-<<<<<<< HEAD
--- Host: 127.0.0.1
--- Generation Time: Apr 29, 2020 at 12:59 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.29
-=======
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2020 a las 00:02:56
+-- Tiempo de generación: 30-04-2020 a las 02:23:22
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
->>>>>>> f5b4e3773fcb374e68405c409b9a0313a0fbfb25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `categorias_productos`
+-- Base de datos: `categorias_productos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorias`
+-- Estructura de tabla para la tabla `categorias`
 --
 
 CREATE TABLE `categorias` (
@@ -41,7 +35,7 @@ CREATE TABLE `categorias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Dumping data for table `categorias`
+-- Volcado de datos para la tabla `categorias`
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
@@ -66,7 +60,7 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comentarios`
+-- Estructura de tabla para la tabla `comentarios`
 --
 
 CREATE TABLE `comentarios` (
@@ -81,49 +75,42 @@ CREATE TABLE `comentarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Dumping data for table `comentarios`
+-- Volcado de datos para la tabla `comentarios`
 --
 
 INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `producto`, `last_updated`, `aprobado`) VALUES
 (3, 'mica@example.com', '::1', 'asdfgfcgvhbjn', 2, 1, '2020-04-27', 1),
 (4, 'lagana.mcl@gmail.com', '::1', 'rdyjtdtfg', 5, 1, '2020-04-27', 0),
-<<<<<<< HEAD
-(5, 'promociones@mailclubcruzverde.', '::1', 'test1', 1, 1, '2020-04-28', 0);
-=======
-(5, '2@d', '::1', 'sdvsdv', 1, 1, '2020-04-28', 0);
->>>>>>> f5b4e3773fcb374e68405c409b9a0313a0fbfb25
+(5, '2@d', '::1', 'sdvsdv', 1, 1, '2020-04-28', 0),
+(6, '2@d', '::1', 'muy cara pero deliciosa ', 5, 4, '2020-04-29', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contactos`
+-- Estructura de tabla para la tabla `contactos`
 --
 
 CREATE TABLE `contactos` (
-  `id_contacto` int(11) NOT NULL,
-  `nombre` varchar(100) COLLATE utf8_bin NOT NULL,
-  `apellido` varchar(100) COLLATE utf8_bin NOT NULL,
-  `telefono` int(11) NOT NULL,
-  `email` varchar(100) COLLATE utf8_bin NOT NULL,
-  `comentario` varchar(100) COLLATE utf8_bin NOT NULL,
-  `motivo` varchar(100) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `apellido` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `telefono` int(255) NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `comentario` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `motivo` varchar(100) COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Dumping data for table `contactos`
+-- Volcado de datos para la tabla `contactos`
 --
 
-INSERT INTO `contactos` (`id_contacto`, `nombre`, `apellido`, `telefono`, `email`, `comentario`, `motivo`) VALUES
-(1, 'C&A', 'Training', 323, 'afonseca@devsutd.com', '0', '0'),
-(2, 'C&A', 'Training', 222, 'afonseca@devsutd.com', 'fckl', 'N;'),
-(3, 'C&A21323e23', 'Trainingdfd', 0, 'afonseca@devsutd.com', 'd', 'a:2:{i:0;s:6:\"VENTAS\";i:1;s:19:\"ATENCION AL CLIENTE\";}'),
-(4, 'C&A', 'Training', 21, 'afonseca@devsutd.com', 'fdaf', 'VENTAS'),
-(5, 'C&A', 'Training', 3232, 'afonseca@devsutd.com', 'dsa', 'VENTAS,ATENCION AL CLIENTE');
+INSERT INTO `contactos` (`id`, `nombre`, `apellido`, `telefono`, `email`, `comentario`, `motivo`) VALUES
+(1, 'Lautaro', 'Serantes', 1162852633, 'nicorrpp@outlook.com', 'asdsad', 'RRHH,VENTAS,ATENCION AL CLIENTE');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perfil`
+-- Estructura de tabla para la tabla `perfil`
 --
 
 CREATE TABLE `perfil` (
@@ -134,7 +121,7 @@ CREATE TABLE `perfil` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permisos`
+-- Estructura de tabla para la tabla `permisos`
 --
 
 CREATE TABLE `permisos` (
@@ -146,7 +133,7 @@ CREATE TABLE `permisos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permisos_perfil`
+-- Estructura de tabla para la tabla `permisos_perfil`
 --
 
 CREATE TABLE `permisos_perfil` (
@@ -158,7 +145,7 @@ CREATE TABLE `permisos_perfil` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productos`
+-- Estructura de tabla para la tabla `productos`
 --
 
 CREATE TABLE `productos` (
@@ -175,7 +162,7 @@ CREATE TABLE `productos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
--- Dumping data for table `productos`
+-- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`) VALUES
@@ -220,7 +207,7 @@ INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -235,7 +222,7 @@ CREATE TABLE `usuarios` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_perfil`
+-- Estructura de tabla para la tabla `usuario_perfil`
 --
 
 CREATE TABLE `usuario_perfil` (
@@ -245,90 +232,87 @@ CREATE TABLE `usuario_perfil` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `categorias`
+-- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indexes for table `comentarios`
+-- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contactos`
+-- Indices de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  ADD PRIMARY KEY (`id_contacto`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `perfil`
+-- Indices de la tabla `perfil`
 --
 ALTER TABLE `perfil`
   ADD PRIMARY KEY (`id_perfil`);
 
 --
--- Indexes for table `permisos`
+-- Indices de la tabla `permisos`
 --
 ALTER TABLE `permisos`
   ADD PRIMARY KEY (`id_permisos`);
 
 --
--- Indexes for table `permisos_perfil`
+-- Indices de la tabla `permisos_perfil`
 --
 ALTER TABLE `permisos_perfil`
   ADD PRIMARY KEY (`id_relpp`);
 
 --
--- Indexes for table `productos`
+-- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usuarios`
+-- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- Indexes for table `usuario_perfil`
+-- Indices de la tabla `usuario_perfil`
 --
 ALTER TABLE `usuario_perfil`
   ADD PRIMARY KEY (`id_rel`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `categorias`
+-- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `comentarios`
+-- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `contactos`
+-- AUTO_INCREMENT de la tabla `contactos`
 --
 ALTER TABLE `contactos`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
->>>>>>> f5b4e3773fcb374e68405c409b9a0313a0fbfb25
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `productos`
+-- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;

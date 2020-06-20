@@ -36,23 +36,18 @@
             </button>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="navbar-nav mr-auto">
-                    <?php
+<?php
                     foreach($secciones_admin as $link=>$nombre_h):
-                ?>
+?>
                     <li class="nav-item <?= $seccion == $link ? "active" : "" ?>">
                         <a class="nav-link" href="index.php?seccion=<?= $link; ?>"><?= $nombre_h; ?></a>
                     </li>
-                    <?php
+<?php
                     endforeach;
-                ?>
-
+?>
                 </ul>
                 <ul class="navbar-nav mr-0">
-                    <?php
-                
-            ?>
                     <li class="nav-item">
-                    
                 </ul>
             </div>
         </nav>
@@ -60,37 +55,26 @@
     <main>
         <h1></h1>
         <div class="container fondo">
-
-            <?php
-session_mensaje();
-if(file_exists("secciones/$seccion.php")):
-    require_once("secciones/$seccion.php");
-else:
-    require_once("../seccion/404.php");
+<?php
+            session_mensaje();
+            if(file_exists("secciones/$seccion.php")):
+                require_once("secciones/$seccion.php");
+            else:
+                require_once("../seccion/404.php");
             endif;
 ?>
-
         </div>
     </main>
     <footer class="pie">
         <div class="row mx-0">
             <div class="col-12 px-0">
                 <p class="text-center">KIWK-E-MART</p>
-                <?php
-                
-
-                ?>
             </div>
         </div>
     </footer>
 
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
-
 </html>

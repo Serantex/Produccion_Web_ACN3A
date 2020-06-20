@@ -59,9 +59,9 @@ main {
 }
 
 .galeria {
-	height:600px;
+	/*height:600px;
 	overflow-y: auto;
-	overflow-x: auto;
+	overflow-x: auto;*/
 	background-color: #FFD90F !important;
   }
 
@@ -108,4 +108,8 @@ color:black !important;
 	justify-content: space-evenly;
 	padding:0 2 0 0;
 	background-color:rgba(255, 217, 15, 0.7) ;
+}
+
+.filtro{
+	padding-left: 2rem;
 }

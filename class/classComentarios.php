@@ -10,7 +10,7 @@ class Comentario{
     function getMostrarComentario($id){
         $com="SELECT * FROM comentarios WHERE producto =$id and aprobado=1";
           return $this->con->query($com, PDO::FETCH_ASSOC);
-      }
+    }
 
     function getMostrarClasificacion($id){
         $com="SELECT AVG(clasificacion) AS 'clasificacion' FROM comentarios WHERE producto = $id and aprobado=1";
@@ -21,9 +21,9 @@ class Comentario{
         return $clasificacion;
     } 
 
-    function getComentarioLastUpdated($id){
+    function getComentarioProducto($id){
         $com="SELECT * FROM comentarios WHERE producto =$id";
-        return $this->con->query($com);
+        return $this->con->query($com, PDO::FETCH_ASSOC);
     }
 
     function validateUpdateComment($id, $current_ip){
@@ -38,10 +38,10 @@ class Comentario{
 
             if($timeRange < 86400 && $ip == $current_ip) {
             $isValid = false;
-        break;
-    }
-  }
-  return $isValid;
+                break;
+            }
+        }
+     return $isValid;
     }
 
     function setComentario($email,$ip,$comentario,$ranking,$id_producto){   
@@ -60,12 +60,12 @@ class Comentario{
     function getMostrarComentarios(){
         $com="SELECT * FROM comentarios";
           return $this->con->query($com, PDO::FETCH_ASSOC);
-      }
+    }
 
-      function ComentarioEdit($id){
+    function ComentarioEdit($id){
         $com="SELECT * FROM comentarios where id=$id";
           return $this->con->query($com, PDO::FETCH_ASSOC);
-      }
+    }
 
     function aprobar($id){
         $comenta="UPDATE  comentarios SET aprobado='1' WHERE id=$id"; 
@@ -78,4 +78,15 @@ class Comentario{
         $comenta = $this->con->prepare($comenta);
         $comenta->execute();
     }
+
+    function getMostrarComentariosEstado($filtro){
+        $com="SELECT * FROM comentarios WHERE aprobado=$filtro";
+          return $this->con->query($com, PDO::FETCH_ASSOC);
+    }
+
+    function getComentarioProductoEstado($id,$filtro){
+        $com="SELECT * FROM comentarios WHERE producto =$id AND aprobado=$filtro";
+        return $this->con->query($com, PDO::FETCH_ASSOC);
+    }
+    
 }

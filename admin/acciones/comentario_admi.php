@@ -15,9 +15,9 @@ foreach($com->ComentarioEdit($id) as $comen){
 
 
 if($aprobado==1){
-    mysqli_query($com->desaprobar($id));
+    $com->desaprobar($id);
 }else{
-    mysqli_query($com->aprobar($id));
+    $com->aprobar($id);
 }
 
 header("Location:../index.php?seccion=comentarios");

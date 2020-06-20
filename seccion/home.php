@@ -14,8 +14,8 @@ foreach($nov->getNovedades() as $producto){
             <div class="card bg-warning border border-dark" style="width: 18rem;">
                 <img src="img/productos/<?=$nombre?>.png" alt=<?=$producto["nombre"]?>>
                 <div class="card-body"> 
-                   <h5 class="card-title"><?=$producto["nombre"];?></h5>
-                   <p class="card-text"><?= $producto["descripcion"] ?></p>
+                   <h5 class="card-title"><?=utf8_encode($producto["nombre"]);?></h5>
+                   <p class="card-text"><?= utf8_encode($producto["descripcion"])?></p>
                     <p class="card-text">$<?=$producto["precio"];?></p>
                     <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
                 </div>

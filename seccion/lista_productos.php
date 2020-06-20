@@ -75,13 +75,14 @@
                     <button type="submit" class="btn btn-warning">Filtrar</button>
                     </div>
                   </div>
+                  </form>
         <div >
 
 <div class="row img">
 <?php
     $productos=new Producto($con);
     if(empty($filtro)){
-      if(!empty($categoria)&& $categoria!=1){
+      if(!empty($categoria) && $categoria!=1){
         foreach($productos->getFiltradoCategorias($categoria) as $producto_filtrado){
           $nombre_filtrado=cambiar_nombre($producto_filtrado["nombre"]);
 ?>
@@ -89,8 +90,8 @@
                           <div class="card bg-warning border border-dark" style="width: 18rem;">
                               <img class="listado"src="img/productos/<?= $nombre_filtrado ?>.png" class="card-img-top" alt="<?= $producto_filtrado["nombre"] ?>">
                                <div class="card-body">
-                                <h5 class="card-title"><?= $producto_filtrado["nombre"] ?></h5>
-                                <p class="card-text"><?= $producto_filtrado["descripcion"] ?></p>
+                                <h5 class="card-title"><?= utf8_encode($producto_filtrado["nombre"]) ?></h5>
+                                <p class="card-text"><?= utf8_encode($producto_filtrado["descripcion"]) ?></p>
                                 <p class="card-text">$<?= $producto_filtrado["precio"] ?></p>
                                 <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre_filtrado?>" class="btn btn-primary centro">IR AL PRODUCTO</a>
                                </div>
@@ -106,8 +107,8 @@
                           <div class="card bg-warning border border-dark" style="width: 18rem;">
                               <img class="listado"src="img/productos/<?= $nombre ?>.png" class="card-img-top" alt="<?= $product["nombre"] ?>">
                                <div class="card-body">
-                                  <h5 class="card-title"><?= $product["nombre"] ?></h5>
-                                  <p class="card-text"><?= $product["descripcion"] ?></p>
+                                  <h5 class="card-title"><?= utf8_encode($product["nombre"])?></h5>
+                                  <p class="card-text"><?= utf8_encode($product["descripcion"])?></p>
                                   <p class="card-text">$<?= $product["precio"] ?></p>
                                   <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary centro">IR AL PRODUCTO</a>
                               </div>
@@ -126,8 +127,8 @@
                           <div class="card bg-warning border border-dark" style="width: 18rem;">
                               <img class="listado"src="img/productos/<?= $nombre ?>.png" class="card-img-top" alt="<?= $productos_filtrado["nombre"] ?>">
                                <div class="card-body">
-                                  <h5 class="card-title"><?= $productos_filtrado["nombre"] ?></h5>
-                                  <p class="card-text">$<?= $productos_filtrado["descripcion"] ?></p>
+                                  <h5 class="card-title"><?= utf8_encode($productos_filtrado["nombre"]) ?></h5>
+                                  <p class="card-text"><?= utf8_encode($productos_filtrado["descripcion"])?></p>
                                   <p class="card-text">$<?= $productos_filtrado["precio"] ?></p>
                                   <a href="http://localhost/Produccion_Web_ACN3A/index.php?seccion=producto&producto=<?=$nombre?>" class="btn btn-primary">IR AL PRODUCTO</a>
                                </div>

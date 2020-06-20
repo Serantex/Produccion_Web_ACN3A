@@ -5,4 +5,4 @@ $secciones = ["home"=>"HOME",
 ,"contacto"=>"CONTACTO",
 ];
 
-$secciones_admin =["lista_productos"=>"Productos", "lista_categoria"=>"Categoria", "comentarios"=>"Comentarios"];
+$secciones_admin =["lista_productos"=>"Productos", "lista_categoriaP"=>"Categoria", "comentarios"=>"Comentarios"];

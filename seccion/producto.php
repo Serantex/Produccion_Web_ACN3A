@@ -19,24 +19,24 @@ foreach($product->getProducto($nombre_filtrado) as $articulo){
         </div>
         <div class="col-8">
                 <div class="row">
-                    <h2 class="fama"><?=$articulo["nombre"]?></h2>
+                    <h2 class="fama"><?=utf8_encode($articulo["nombre"])?></h2>
                 </div>
                 <div>
                     <p><span class="fama">$<?=$articulo["precio"]?></span></p>
                     <p class="fama"><span>clasificacion:</span> <?=$com->getMostrarClasificacion($articulo['id'])?>★</p>
                     <p><span class="fama">Descripción:</span></p>
-                    <p class="fama"><?=$articulo["descripcion"]?></p>
+                    <p class="fama"><?=utf8_encode($articulo["descripcion"])?></p>
                 </div>
                 <div class="row">
 
                     <div>
-                        <h3 class="fama">Comentarios del Product</h3>
+                        <h3 class="fama">Comentarios del Producto</h3>
                         <hr>
                         <?php 
                             foreach($com->getMostrarComentario($articulo["id"]) as $comentario){
                         ?>
                             
-                            <p class="fama"><?=$comentario["mail"];?> dijo : <?=$comentario["comentario"];?> CLASIFICO:<STRONG><?=$comentario["clasificacion"];?>★</STRONG> </p>
+                            <p class="fama"><?=$comentario["mail"];?> dijo : <?=utf8_encode($comentario["comentario"]);?> CLASIFICO:<STRONG><?=$comentario["clasificacion"];?>★</STRONG> </p>
                            <hr>
                             
                         <?php

@@ -6,8 +6,9 @@
     include_once("../config/funciones.php");
     include_once("../class/classCategorias.php");
     include_once("../class/classProductos.php");
+    include_once("../class/classMarcas.php");
     include_once("../class/classComentarios.php");
-   $seccion = $_GET["seccion"] ?? "home";
+    $seccion = $_GET["seccion"] ?? "lista_productos";
    
    
 

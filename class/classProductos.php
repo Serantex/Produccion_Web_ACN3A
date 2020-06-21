@@ -33,57 +33,121 @@ class Producto{
             return $this->con->query($filtro, PDO::FETCH_ASSOC);
         }
 
-        function getFiltrado($filter, $cat){
-            if($cat==1){
-                if(!empty($filter)){
-                    switch($filter){
-                     case 'NOV':
-                        $filtro="SELECT * FROM productos WHERE stock=1 AND destacado=1";
+        function getFiltrado($filter,$cat,$marc){
+            if(empty($filter)){
+                if($cat!=1){
+                    if($marc!=1){
+                        $filtro="SELECT * FROM productos WHERE stock=1 AND marca=$marc AND (sub_categoria=$cat OR categoria=$cat)";
                         return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                        break;
-                    case 'ZA':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY nombre DESC";
-                        return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                        break;
-                    case 'AZ':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY nombre ASC";
-                         return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                         break;    
-                    case 'MIN':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY precio ASC";
-                         return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                         break;
-                    case 'MAX':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY precio DESC";
+                    }else{
+                        $filtro="SELECT * FROM productos WHERE (sub_categoria=$cat OR categoria=$cat) AND stock=1";
                         return $this->con->query($filtro, PDO::FETCH_ASSOC);
                     }
-                 }
+                }else{
+                    if($marc!=1){
+                        $filtro="SELECT * FROM productos WHERE marca=$marc AND stock=1";
+                        return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                    }else{
+                        $filtro="SELECT * FROM productos WHERE stock=1";
+                        return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                    }
+                }
             }else{
-                if(!empty($filter)){
-                    switch($filter){
-                 case 'NOV':
-                     $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat AND stock=1 AND destacado=1";
-                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                     break;
-                case 'ZA':
-                  $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat AND stock=1 ORDER BY nombre DESC";
-                   return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                     break;
-                case 'AZ':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY nombre ASC";
-                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                break;
-                case 'MIN':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY precio ASC";
-                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                    break;
-                case 'MAX':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY precio DESC";
-                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                    }   
+                if($cat!=1){
+                    if($marc!=1){
+                        switch($filter){
+                            case 'NOV':
+                                $filtro="SELECT * FROM productos WHERE marca=$marc AND stock=1 AND destacado=1 AND (sub_categoria=$cat OR  categoria=$cat)";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'ZA':
+                             $filtro="SELECT * FROM productos WHERE  marca=$marc AND stock=1 AND (sub_categoria=$cat OR  categoria=$cat) ORDER BY nombre DESC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'AZ':
+                               $filtro="SELECT * FROM productos WHERE  marca=$marc AND stock=1 AND (sub_categoria=$cat OR  categoria=$cat) ORDER BY nombre ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'MIN':
+                               $filtro="SELECT * FROM productos WHERE  marca=$marc AND stock=1 AND (sub_categoria=$cat OR  categoria=$cat) ORDER BY precio ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'MAX':
+                               $filtro="SELECT * FROM productos WHERE marca=$marc AND stock=1 AND (sub_categoria=$cat OR  categoria=$cat) ORDER BY precio DESC";
+                               return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                               }
+                    }else{
+                        switch($filter){
+                            case 'NOV':
+                                $filtro="SELECT * FROM productos WHERE   (sub_categoria=$cat OR  categoria=$cat)  AND stock=1 AND destacado=1";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'ZA':
+                             $filtro="SELECT * FROM productos WHERE   (sub_categoria=$cat OR  categoria=$cat)  AND stock=1 ORDER BY nombre DESC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                 break;
+                           case 'AZ':
+                               $filtro="SELECT * FROM productos WHERE   (sub_categoria=$cat OR  categoria=$cat)  AND stock=1 ORDER BY nombre ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'MIN':
+                               $filtro="SELECT * FROM productos WHERE   (sub_categoria=$cat OR  categoria=$cat)  AND stock=1 ORDER BY precio ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'MAX':
+                               $filtro="SELECT * FROM productos WHERE  (sub_categoria=$cat OR  categoria=$cat) AND stock=1 ORDER BY precio DESC";
+                               return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                               }
+                    }
+                }else{
+                    if($marc!=1){
+                        switch($filter){
+                            case 'NOV':
+                                $filtro="SELECT * FROM productos WHERE  marca=$marc AND stock=1 AND destacado=1";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'ZA':
+                             $filtro="SELECT * FROM productos WHERE  marca=$marc AND stock=1 ORDER BY nombre DESC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'AZ':
+                               $filtro="SELECT * FROM productos WHERE  marca =$marc AND stock=1 ORDER BY nombre ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'MIN':
+                               $filtro="SELECT * FROM productos WHERE  marca =$marc AND stock=1 ORDER BY precio ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'MAX':
+                               $filtro="SELECT * FROM productos WHERE  marca =$marc AND stock=1 ORDER BY precio DESC";
+                               return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                           }
+                    }else{
+                        switch($filter){
+                            case 'NOV':
+                               $filtro="SELECT * FROM productos WHERE stock=1 AND destacado=1";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'ZA':
+                               $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY nombre DESC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'AZ':
+                               $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY nombre ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;    
+                           case 'MIN':
+                               $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY precio ASC";
+                                return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                                break;
+                           case 'MAX':
+                               $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY precio DESC";
+                               return $this->con->query($filtro, PDO::FETCH_ASSOC);
+                           }
+                    }
                 }
             }
-        }
+}
         
         function getProducto_detalle($id){
             $producto="SELECT * FROM productos WHERE id=$id";

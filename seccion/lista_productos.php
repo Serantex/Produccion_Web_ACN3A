@@ -59,17 +59,17 @@
 
         $marc = new marca($con);
 
-          foreach($marc->getMarcas() as $row){
+          foreach($marc->getMarca() as $row){
             ?>
             <a class="lista" href= "index.php?seccion=lista_productos&marca=<?php echo $row['id_marca']?>&cat=<?php echo $categoria?>"><?php echo $row['nombre']?></a>
               <br>
                 <?php
-                  foreach($marc->getMarcas($row['id_marca']) as $row2){
+                  foreach($marc->getMarca($row['id_marca']) as $row2){
                 ?>
                     <a class="lista" href="index.php?seccion=lista_productos&marca=<?php echo $row2['id_marca']?>&cat=<?php echo $categoria?>">>  <?php echo $row2['nombre']?></a>  
                     <br>
          <?php 
-                          foreach($marc->getMarcas($row2["id_marca"]) as $row3){ 
+                          foreach($marc->getMarca($row2["id_marca"]) as $row3){ 
                               ?>
                             <a class="lista" href="index.php?seccion=lista_productos&marca=<?php echo $row3['id_marca']?>&cat=<?php echo $categoria?>">>>   <?php echo $row3['nombre']?></a>
 

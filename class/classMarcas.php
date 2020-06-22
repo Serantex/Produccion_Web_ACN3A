@@ -58,13 +58,12 @@ function __construct($con){
         $sql->execute();
     }
     
-    function setMarca($nombre,$idPadre){
-        $sql="INSERT INTO marcas (nombre,id_padre) VALUES (:nombre, 1)";
+    function setMarca($nombre){
+        $sql="INSERT INTO marcas (nombre) VALUES (:nombre)";
         $sql = $this->con->prepare($sql);
        
         $sql->bindParam(':nombre',$nombre,PDO::PARAM_STR, 20);
-        $sql->bindParam(':id_padre',$idPadre,PDO::PARAM_INT, 20);
-
+       
         $sql->execute();
     }
 }

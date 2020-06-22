@@ -27,7 +27,7 @@ class Comentario{
     }
 
     function validateUpdateComment($id, $current_ip){
-        $comentarios = $this->getComentarioLastUpdated($id);
+        $comentarios = $this->getComentarioProducto($id);
         $date = strtotime(date('Y-m-d'));
         $isValid = true;
 

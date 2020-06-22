@@ -90,3 +90,14 @@ function cambiar_nombre($nombre){
             return "checked";
         }
     }
+    function comp($nombre,$nombre2){
+        if($nombre==$nombre2){
+            return "selected";
+      }
+    }
+    
+    function vacio($dato){
+        if(empty($dato)){
+            return "selected";
+        }
+    }

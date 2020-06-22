@@ -3,6 +3,7 @@
     $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
     $productos=new Producto($con);
     $cat = new Categoria($con);
+    $mar = new Marca($con);
 
     $accion="agregar_producto";
     $boton="Agregar";
@@ -20,6 +21,7 @@
             $novedad=$product["destacado"];
             $cat1=$product["categoria"];
             $sub_cat1=$product["sub_categoria"];
+            $p_marca=$product["marca"];
         }
 }
 ?>
@@ -82,7 +84,27 @@
 ?>
                                             <option value="NULL" <?=isset($nombre) ? vacio($sub_cat1) : '';?> >Ninguno</option>
                                         </select>
+
                                     </div>
+                                    <br>
+                                    <small>Seleccione Marca del producto si es que tiene<br></small>
+                                    <div class="form-check form-check-inline">
+                                        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                        <select class="custom-select mr-sm-2" id="marca" name="marca">
+                                            <option selected>Maracas</option>
+<?php
+                                            foreach($mar->getTodasMarca() as $marca){
+                                                $id_marca=$marca["id_marca"];
+                                                $nomb_marca=$marca["nombre"];
+?>
+                                            <option value="<?=$id_marca?>" <?=isset($nombre) ? comp($p_marca,$id_marca) : '';?>><?=$nomb_marca?></option>
+<?php
+                                            }
+?>
+                                            <option value="NULL" <?=isset($nombre) ? vacio($p_marca) : '';?> >Ninguno</option>
+                                        </select>
+                                    </div>
+
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" id="Stock" name="stock" <?=isset($nombre) ? cheked($stock): '';?>>

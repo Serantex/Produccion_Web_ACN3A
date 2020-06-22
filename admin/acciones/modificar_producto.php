@@ -13,6 +13,7 @@ $precio=$_POST["precio"];
 $descrip=$_POST["descrip"];
 $cat=$_POST["cat"];
 $sub_cat=$_POST["sub_cat"];
+$marca=$_POST["marca"];
 
 foreach($producto->getProductoEdit($nombre_actual) as $pro){
     $id=$pro["id"];
@@ -38,7 +39,7 @@ if(empty($nombre) || empty($precio) || empty($descrip) || empty($cat) || empty($
     header("Location:../index.php?seccion=producto_admi&error=datos");
     die();
 }else{
-    $producto->updateProducto($id,$nombre,$cat,$sub_cat,$descrip,$precio,$stock,$novedad);
+    $producto->updateProducto($id,$nombre,$cat,$sub_cat,$descrip,$precio,$stock,$novedad,$marca);
 
     if (!empty($_FILES["imagen"]) && $_FILES["imagen"]["size"] > 0):
 

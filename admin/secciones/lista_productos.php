@@ -2,6 +2,7 @@
     $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
     $productos=new Producto($con);
     $cat = new Categoria($con);
+    $mar= new Marca($con);
 
 ?>
 <div class="row mt-5 galeria">
@@ -37,6 +38,7 @@
                         <th>Precio</th>
                         <th>Categoria</th>
                         <th>SubCategoria</th>
+                        <th>Marca</th>
                         <th>Stock</th>
                         <th>Destacado</th>
                         <th>Acciones</th>
@@ -56,7 +58,8 @@
                             $precio=$product["precio"];
                             $categoria=$product["categoria"];
                             $subcat=$product["sub_categoria"];
-                
+                            $marc=$product["marca"];
+
                             if($product["stock"]==1){
                                 $stock="si";
                             }else{
@@ -72,7 +75,11 @@
                             }else{
                                 $destacado="no";
                             }
-                            
+
+                            if($marc==null){
+                                $marca="sin marca";
+                            }    
+
 ?>
                     <tr>
                         <td><?=$id?></td>
@@ -92,7 +99,19 @@
                             }
                         }
                         ?>
-                        <td><?=$sub_cat?></td>   
+                        <td><?=$sub_cat?></td>
+<?php
+                         
+                        if($marc!=null){
+                        foreach($mar->getIdMarcas($marc)as $nombre_m){
+                            $marca=$nombre_m["nombre"];
+                        }
+                    }
+?>
+                        <td><?=$marca?></td>
+<?php
+                        
+?>
                         <td><?=$stock?></td>
                         <td><?=$destacado?></td>
                         <td>
@@ -112,6 +131,7 @@
                             $precio=$product["precio"];
                             $categoria=$product["categoria"];
                             $subcat=$product["sub_categoria"];
+                            $marc=$product["marca"];
                 
                             if($product["stock"]==1){
                                 $stock="si";
@@ -128,6 +148,12 @@
                             }else{
                                 $destacado="no";
                             }  
+
+                            if($marc==null){
+                                $marca="sin marca";
+                            }    
+
+
 ?>
                     <tr>
                         <td><?=$id?></td>
@@ -149,12 +175,20 @@
                         }
 ?>
                         <td><?=$sub_cat?></td>
+<?php
+                    if($marc!=null){        
+                        foreach($mar->getIdMarcas($marc)as $nombre_m){
+                            $marca=$nombre_m["nombre"];
+                    }
+                }
+?>
+                        <td><?=$marca?></td>                     
                         <td><?=$stock?></td>
                         <td><?=$destacado?></td>
                         <td>
                             <div class="btn-group">
                                 <a href="index.php?seccion=producto_admi&producto=<?=$nombre?>" class="btn btn-success btn-sm">Editar</a>
-                                <a href="index.php?seccion=comenarios&producto=<?=$id?>" class="btn btn-success btn-sm">Comentarios</a>                            
+                                <a href="index.php?seccion=comentarios&producto=<?=$id?>" class="btn btn-success btn-sm">Comentarios</a>                            
                             </div>
                         </td>
                     </tr>

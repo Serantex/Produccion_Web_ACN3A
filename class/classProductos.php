@@ -57,7 +57,6 @@ class Producto{
                     }
                 }
             }else{
-<<<<<<< HEAD
                 if($cat!=1){
                     if($marc!=1){
                         switch($filter){
@@ -151,83 +150,18 @@ class Producto{
                            }
                     }
                 }
-=======
-                if(!empty($filter)){
-                    switch($filter){
-                 case 'NOV':
-                     $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat AND stock=1 AND destacado=1";
-                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                     break;
-                case 'ZA':
-                  $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat AND stock=1 ORDER BY nombre DESC";
-                   return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                     break;
-                case 'AZ':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY nombre ASC";
-                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                break;
-                case 'MIN':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY precio ASC";
-                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                    break;
-                case 'MAX':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$cat or categoria = $cat AND stock=1 ORDER BY precio DESC";
-                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                }}
             }
+}   
+        function updateProducto($id,$nombre,$cat,$subcat,$descrip,$precio,$stock,$destacado,$marca){
+            $sql="UPDATE productos SET nombre='$nombre', categoria='$cat',sub_categoria='$subcat', descripcion='$descrip', precio='$precio', stock='$stock', destacado='$destacado', marca='$marca' WHERE id=$id";
+            $sql=$this->con->prepare($sql);
+            $sql->execute();
         }
-    
-    function getFiltradoMarca($filter, $marc){
-            if($marc==1){
-                if(!empty($filter)){
-                    switch($filter){
-                     case 'NOV':
-                        $filtro="SELECT * FROM productos WHERE stock=1 AND destacado=1";
-                        return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                        break;
-                    case 'ZA':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY nombre DESC";
-                        return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                        break;
-                    case 'AZ':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY nombre ASC";
-                         return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                         break;    
-                    case 'MIN':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY precio ASC";
-                         return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                         break;
-                    case 'MAX':
-                        $filtro="SELECT * FROM productos WHERE stock=1 ORDER BY precio DESC";
-                        return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                    }
-                 }
-            }else{
-                if(!empty($filter)){
-                    switch($filter){
-                 case 'NOV':
-                     $filtro="SELECT * FROM productos WHERE sub_categoria=$marc OR categoria=$marc AND stock=1 AND destacado=1";
-                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                     break;
-                case 'ZA':
-                  $filtro="SELECT * FROM productos WHERE sub_categoria=$marc OR categoria=$marc AND stock=1 ORDER BY nombre DESC";
-                   return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                     break;
-                case 'AZ':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$marc or categoria = $marc AND stock=1 ORDER BY nombre ASC";
-                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                break;
-                case 'MIN':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$marc or categoria = $marc AND stock=1 ORDER BY precio ASC";
-                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                    break;
-                case 'MAX':
-                    $filtro="SELECT * FROM productos WHERE sub_categoria=$marc or categoria = $marc AND stock=1 ORDER BY precio DESC";
-                    return $this->con->query($filtro, PDO::FETCH_ASSOC);
-                }}
->>>>>>> 5ddd58cfcb853e18cf5b5e38997999a29a94c368
-            }
-}
+
+        function getFiltradoCategoria($cat){
+            $filtro="SELECT * FROM productos WHERE sub_categoria=$cat OR categoria=$cat";
+             return $this->con->query($filtro, PDO::FETCH_ASSOC);
+        }
         
         function getProducto_detalle($id){
             $producto="SELECT * FROM productos WHERE id=$id";
@@ -237,6 +171,22 @@ class Producto{
         function getProductoEdit($name){
             $product="SELECT * FROM productos WHERE nombre='$name'";
             return $this->con->query($product, PDO::FETCH_ASSOC);
+        }
+
+        function setProducto($nombre,$cat,$subcat,$descrip,$precio,$stock,$destacado,$marca){   
+            $producto="INSERT INTO productos (nombre,categoria,sub_categoria,marca,descripcion,precio,stock,destacado) VALUES (:nombre,:categoria,:sub_categoria,:marca,:descripcion,:precio,:stock,:destacado)"; 
+            $producto = $this->con->prepare($producto);
+    
+            $producto->bindParam(':nombre',$nombre,PDO::PARAM_STR, 30);
+            $producto->bindParam(':categoria',$cat,PDO::PARAM_INT, 20);
+            $producto->bindParam(':sub_categoria',$subcat,PDO::PARAM_INT,20);
+            $producto->bindParam(':marca',$marca,PDO::PARAM_INT,20);
+            $producto->bindParam(':descripcion',$descrip,PDO::PARAM_STR,300); 
+            $producto->bindParam(':precio',$precio,PDO::PARAM_STR,30);
+            $producto->bindParam(':stock',$stock,PDO::PARAM_INT,1);
+            $producto->bindParam(':destacado',$destacado,PDO::PARAM_INT,1);
+    
+            $producto->execute();
         }
         
     }

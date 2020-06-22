@@ -10,8 +10,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
                         <th>ID</th>
+                        <th>Nombre</th>
                         <th>Habilitado</th>
                         <th>Acciones</th> 
                     </tr>
@@ -34,8 +34,8 @@
                            $cat_padre=$subcat["nombre"]; 
 ?>
                     <tr>
-                        <td><?=$nombre?></td>
                         <td><?=$id?></td>
+                        <td><?=$nombre?></td>
                         <td><?=$estado?></td>
                         <td>
                             <div class="btn-group">

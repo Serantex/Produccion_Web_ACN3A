@@ -10,8 +10,8 @@
              <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
                         <th>ID</th>
+                        <th>Nombre</th>
                         <th>Categoria Padre</th>
                         <th>Habilitado</th>
                         <th>Acciones</th> 
@@ -37,8 +37,8 @@
                         
 ?>
                     <tr>
-                        <td><?=$nombre?></td>
                         <td><?=$id?></td>
+                        <td><?=$nombre?></td>
                         <td><?=$cat_padre?></td>
                         <td><?=$estado?></td>
                         <td>

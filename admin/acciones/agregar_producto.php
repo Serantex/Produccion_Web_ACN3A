@@ -10,7 +10,7 @@ $producto=new Producto($con);
 $nombre=ucwords($_POST["nombre"]);
 $precio=$_POST["precio"];
 $descrip=$_POST["descrip"];
-
+$marca=$_POST["marca"];
 $cat=$_POST["cat"];
 $sub_cat=$_POST["sub_cat"];
 
@@ -39,7 +39,7 @@ if(empty($nombre) || empty($precio) || empty($descrip) || empty($cat) || empty($
     header("Location:../index.php?seccion=producto_admi&error=datos");
     die();
 }else{
-    $producto->setProducto($nombre,$cat,$sub_cat,$descrip,$precio,$stock,$novedad);
+    $producto->setProducto($nombre,$cat,$sub_cat,$descrip,$precio,$stock,$novedad,$marca);
     move_uploaded_file($imagen["tmp_name"],PRODUCTOS . "/$nombre_img.png");
 }
 

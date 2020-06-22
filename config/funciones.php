@@ -100,5 +100,3 @@ function vacio($dato){
         return "selected";
     }
 }
-
-

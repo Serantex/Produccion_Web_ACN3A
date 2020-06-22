@@ -52,7 +52,7 @@
                 
             ?>
                     <li class="nav-item">
-                    
+                    <a href="index.php?seccion=log_in"> Log in </a>
                 </ul>
             </div>
         </nav>

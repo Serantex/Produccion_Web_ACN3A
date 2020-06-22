@@ -109,3 +109,7 @@ function cambiar_nombre($nombre){
             return "selected";
         }
     }
+
+    function logueado(){
+        return isset($_SESSION["usuario"]);
+    }

@@ -11,6 +11,12 @@
     include_once("../class/classSignUp.php");
     $seccion = $_GET["seccion"] ?? "lista_productos";
    
+    if(logueado()):
+        $_SESSION["estado"] = "error";
+        $_SESSION["mensaje"] = "Para explorar mas partes de la pagina registrate y en caso que tengas cuenta ingresar";
+        header("Location:../index.php?seccion=log_in");
+        die();
+    endif;
    
 
 ?>

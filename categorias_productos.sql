@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-06-2020 a las 21:54:20
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Tiempo de generación: 21-06-2020 a las 21:51:13
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -118,6 +117,31 @@ INSERT INTO `contactos` (`id`, `nombre`, `apellido`, `telefono`, `email`, `comen
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `marcas`
+--
+
+CREATE TABLE `marcas` (
+  `id_marca` int(250) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_bin NOT NULL,
+  `id_padre` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `marcas`
+--
+
+INSERT INTO `marcas` (`id_marca`, `nombre`, `id_padre`) VALUES
+(1, 'Todas las Marcas', 0),
+(2, 'FunnyToys', 1),
+(3, 'DuffSico', 1),
+(4, 'mrSparkle', 1),
+(5, 'Mapel', 1),
+(6, 'Tonicos666', 1),
+(7, 'Krusty', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `perfil`
 --
 
@@ -164,51 +188,54 @@ CREATE TABLE `productos` (
   `descripcion` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `precio` float NOT NULL,
   `stock` tinyint(1) NOT NULL,
-  `destacado` tinyint(1) NOT NULL
+  `puntuacion` int(11) NOT NULL,
+  `comentario` tinyint(1) NOT NULL,
+  `destacado` tinyint(1) NOT NULL,
+  `Marca` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `destacado`) VALUES
-(1, 'Acido Sulfurico', 24, NULL, 'Ideal para calmar la sed', 10.5, 1, 0),
-(2, 'Aprieta Y Traga', 7, 9, 'Salchichón completo del tío Lardo!ñ', 10.5, 1, 1),
-(3, 'Rosquilla', 7, 8, 'La rosca prohibida', 1, 1, 1),
-(4, 'Duff', 6, 23, 'Mmmm Cerveza!', 545, 1, 1),
-(5, 'Simpson Son', 2, NULL, 'Tonico revitalizante', 35, 1, 1),
-(6, 'Gabo', 10, 13, 'Soy un perversito', 45, 1, 0),
-(7, 'Colonia', 24, NULL, 'Ideal para regalar', 2, 1, 1),
-(8, 'Buzz', 6, 22, 'Refresco de Itchy and Scratchy', 3, 1, 1),
-(9, 'Alma', 24, NULL, 'Vale por el alma de Bart Simpsons', 63, 1, 1),
-(10, 'Japon', 24, NULL, 'Mr. Sparkle, para lavar los platos', 35, 1, 0),
-(11, 'Arroz', 7, 9, 'Arroz con queso', 20, 1, 1),
-(12, 'Squishee', 6, 22, 'Mmm malteada!', 25, 1, 1),
-(13, 'Test Embarazo', 24, NULL, 'El test mas efectivo, siempre da positivo', 50, 0, 1),
-(14, 'Khlav Kalash', 7, 9, 'No pizza solo Khlav Kalash', 5, 1, 0),
-(15, 'Jugo Cangrejo', 6, 22, 'De cangrejos?!, Si de cangrejos', 15, 1, 0),
-(16, 'Bort', 24, NULL, 'Necesitamos mas matriculas con el nombre de Bort', 15, 1, 0),
-(17, 'El Homeromovil', 24, NULL, 'Si, esta moustrocidad cuesta eso', 82000, 1, 1),
-(18, 'Cereal', 7, 8, 'Viene con una rueda de metal', 2, 1, 0),
-(19, 'Cho Cho', 24, NULL, 'La maquinita tu eres el elegido', 1, 1, 0),
-(20, 'Conejo Pepito', 10, 13, 'Incluye la cabeza arrancada por Bart', 5, 1, 1),
-(21, 'Escopeta', 24, NULL, 'Incluye el modo callejera', 10, 1, 1),
-(22, 'Globo', 24, NULL, 'El profesor Smithers y sus pompotas', 24, 1, 1),
-(23, 'Jarabe', 2, NULL, 'Puede caudar alusinaciones', 18, 1, 1),
-(24, 'Juego', 10, 13, 'Bonestorm, el juego mas violento', 50, 1, 0),
-(25, 'Llamarada Moe', 6, 23, 'El ingrediente secreto es jarabe para la tos', 25, 1, 1),
-(26, 'Mano Mono', 24, NULL, 'Mano de los deseos, ideal para la paz mundial', 80, 1, 0),
-(27, 'Martillo', 24, NULL, 'Martillo electronico creado por Tomas Edison', 36, 1, 1),
-(28, 'Papas', 7, 9, 'Sabrosas papas fritas', 3, 1, 1),
-(29, 'Salchicha', 7, 9, 'Se cayo al suelo, pero sera nuestro secreto', 1, 1, 1),
-(30, 'Sillon banio', 24, NULL, 'Super comodo para ir al baño', 200, 1, 1),
-(31, 'Focusyn', 2, NULL, 'Me siento feliz tomo mi Focusyn', 57, 1, 1),
-(32, 'Videogame 2', 10, 13, 'Operacion rescate', 54, 1, 0),
-(33, 'Fonzo', 10, 12, 'Dame un abrazo', 150, 1, 1),
-(34, 'Disfraz Bartman', 3, 4, 'Salvando la ciudad de Sprinfield', 234, 1, 1),
-(35, 'Disfraz Hombre Radioactivo', 3, 4, 'Soy el hombre radioactivo', 263, 1, 0),
-(36, 'Disfraz Lisa', 3, 5, 'Premio por no tener ayuda de los padres', 76, 1, 1),
-(37, 'Stacy Vaquera', 10, 11, 'Olee!', 70, 1, 1);
+INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`, `Marca`) VALUES
+(1, 'Acido Sulfurico', 24, NULL, 'Ideal para calmar la sed', 10.5, 1, 0, 0, 0, 1),
+(2, 'Aprieta Y Traga', 7, 9, 'Salchichón completo del tío Lardo!', 10.5, 1, 0, 0, 1, 1),
+(3, 'Rosquilla', 7, 8, 'La rosca prohibida', 1, 1, 0, 0, 1, 2),
+(4, 'Duff', 6, 23, 'Mmmm Cerveza!', 545, 1, 0, 0, 1, 3),
+(5, 'Simpson Son', 2, NULL, 'Tonico revitalizante', 35, 1, 0, 0, 1, 2),
+(6, 'Gabo', 10, 13, 'Soy un perversito', 45, 1, 0, 0, 0, 4),
+(7, 'Colonia', 24, NULL, 'Ideal para regalar', 2, 1, 1, 0, 1, 3),
+(8, 'Buzz', 6, 22, 'Refresco de Itchy and Scratchy', 3, 1, 0, 0, 1, 6),
+(9, 'Alma', 24, NULL, 'Vale por el alma de Bart Simpsons', 63, 1, 0, 0, 1, 5),
+(10, 'Japon', 24, NULL, 'Mr. Sparkle, para lavar los platos', 35, 1, 0, 0, 0, 6),
+(11, 'Arroz', 7, 9, 'Arroz con queso', 20, 1, 0, 0, 1, 5),
+(12, 'Squishee', 6, 22, 'Mmm malteada!', 25, 1, 0, 0, 1, 3),
+(13, 'Test Embarazo', 24, NULL, 'El test mas efectivo, siempre da positivo', 50, 0, 0, 0, 1, 4),
+(14, 'Khlav Kalash', 7, 9, 'No pizza solo Khlav Kalash', 5, 1, 0, 0, 0, 1),
+(15, 'Jugo Cangrejo', 6, 22, 'De cangrejos?!, Si de cangrejos', 15, 1, 0, 0, 0, 1),
+(16, 'Bort', 24, NULL, 'Necesitamos mas matriculas con el nombre de Bort', 15, 1, 0, 0, 0, 2),
+(17, 'El Homeromovil', 24, NULL, 'Si, esta moustrocidad cuesta eso', 82000, 1, 0, 0, 1, 4),
+(18, 'Cereal', 7, 8, 'Viene con una rueda de metal', 2, 1, 0, 0, 0, 3),
+(19, 'Cho Cho', 24, NULL, 'La maquinita tu eres el elegido', 1, 1, 0, 0, 0, 3),
+(20, 'Conejo Pepito', 10, 13, 'Incluye la cabeza arrancada por Bart', 0, 1, 0, 0, 1, 5),
+(21, 'Escopeta', 24, NULL, 'Incluye el modo callejera', 10, 1, 0, 0, 1, 6),
+(22, 'Globo', 24, NULL, 'El profesor Smithers y sus pompotas', 24, 1, 0, 0, 1, 1),
+(23, 'Jarabe', 2, NULL, 'Puede caudar alusinaciones', 18, 1, 0, 0, 1, 2),
+(24, 'Juego', 10, 13, 'Bonestorm, el juego mas violento', 50, 1, 0, 0, 0, 3),
+(25, 'Llamarada Moe', 6, 23, 'El ingrediente secreto es jarabe para la tos', 25, 1, 0, 0, 1, 4),
+(26, 'Mano Mono', 24, NULL, 'Mano de los deseos, ideal para la paz mundial', 80, 1, 0, 0, 0, 0),
+(27, 'Martillo', 24, NULL, 'Martillo electronico creado por Tomas Edison', 36, 1, 0, 0, 1, 0),
+(28, 'Papas', 7, 9, 'Sabrosas papas fritas', 3, 1, 0, 0, 1, 0),
+(29, 'Salchicha', 7, 9, 'Se cayo al suelo, pero sera nuestro secreto', 1, 1, 0, 0, 1, 0),
+(30, 'Sillon banio', 24, NULL, 'Super comodo para ir al baño', 200, 1, 0, 0, 1, 0),
+(31, 'Focusyn', 2, NULL, 'Me siento feliz tomo mi Focusyn', 57, 1, 0, 0, 1, 0),
+(32, 'Videogame 2', 10, 13, 'Operacion rescate', 54, 1, 0, 0, 0, 0),
+(33, 'Fonzo', 10, 12, 'Dame un abrazo', 150, 1, 0, 0, 1, 0),
+(34, 'Disfraz Bartman', 3, 4, 'Salvando la ciudad de Sprinfield', 234, 1, 0, 0, 1, 0),
+(35, 'Disfraz Hombre Radioactivo', 3, 4, 'Soy el hombre radioactivo', 263, 1, 0, 0, 0, 0),
+(36, 'Disfraz Lisa', 3, 5, 'Premio por no tener ayuda de los padres', 76, 1, 0, 0, 1, 0),
+(37, 'Stacy Vaquera', 10, 11, 'Olee!', 70, 1, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -258,6 +285,12 @@ ALTER TABLE `comentarios`
 --
 ALTER TABLE `contactos`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `marcas`
+--
+ALTER TABLE `marcas`
+  ADD PRIMARY KEY (`id_marca`);
 
 --
 -- Indices de la tabla `perfil`
@@ -321,7 +354,7 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

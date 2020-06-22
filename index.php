@@ -7,7 +7,11 @@
     include_once("class/classCategorias.php");
     include_once("class/classProductos.php");
     include_once("class/classComentarios.php");
+<<<<<<< HEAD
     include_once("class/classMarca.php");
+=======
+    include_once("class/classMarcas.php");
+>>>>>>> 5ddd58cfcb853e18cf5b5e38997999a29a94c368
    $seccion = $_GET["seccion"] ?? "home";
 
    
@@ -53,7 +57,7 @@
                 
             ?>
                     <li class="nav-item">
-                    
+                    <a href="index.php?seccion=log_in"> Log in </a>
                 </ul>
             </div>
         </nav>

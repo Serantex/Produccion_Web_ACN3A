@@ -7,6 +7,7 @@
     include_once("class/classCategorias.php");
     include_once("class/classProductos.php");
     include_once("class/classComentarios.php");
+    include_once("class/classMarcas.php");
    $seccion = $_GET["seccion"] ?? "home";
 
    

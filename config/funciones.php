@@ -70,23 +70,27 @@ function mostrar_nombre($nombre){
     }
 
 
-
 function categorias($get){
         header("products.php?seccion=lista_productos&cat=$get");
     }
 
- function cambiar_nombre($nombre){
+function marcas($get){
+        header("products.php?seccion=lista_productos&marc=$get");
+    }
+
+function cambiar_nombre($nombre){
 
     $nombre_1 = str_ireplace(" ","_",$nombre);
 
     return $nombre_1;
     }
 
-function cheked($chek){
+    function cheked($chek){
         if($chek==1){
             return "checked";
         }
     }
+<<<<<<< HEAD
 
 
 function comp($nombre,$nombre2){
@@ -100,3 +104,5 @@ function vacio($dato){
         return "selected";
     }
 }
+=======
+>>>>>>> eb2302b6e6a5f27b5d5f846b3ce4a69a7e6445c1

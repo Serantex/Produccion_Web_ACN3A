@@ -90,19 +90,3 @@ function cambiar_nombre($nombre){
             return "checked";
         }
     }
-<<<<<<< HEAD
-
-
-function comp($nombre,$nombre2){
-    if($nombre==$nombre2){
-        return "selected";
-  }
-}
-
-function vacio($dato){
-    if(empty($dato)){
-        return "selected";
-    }
-}
-=======
->>>>>>> eb2302b6e6a5f27b5d5f846b3ce4a69a7e6445c1

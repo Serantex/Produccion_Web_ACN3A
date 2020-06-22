@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2020 a las 04:24:34
+-- Tiempo de generación: 22-06-2020 a las 05:37:34
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -42,7 +42,7 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`, `estado`) VALUES
 (1, 'Todos los Productos', 0, 1),
 (2, 'Farmacos', 1, 1),
 (3, 'Disfraces', 1, 1),
-(4, 'Superheroes', 3, 1),
+(4, 'Superheroes', 3, 0),
 (5, 'Personajes', 3, 1),
 (6, 'Bebidas', 1, 1),
 (7, 'Alimentos', 1, 1),
@@ -277,7 +277,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`

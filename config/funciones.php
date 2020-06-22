@@ -68,6 +68,14 @@ function mostrar_nombre($nombre){
     
     return $nombre_2;
     }
+function mostrar_id($id_marca){
+
+    $marca_1 = str_ireplace("_"," ",$id_marca);
+    
+    $marca_2 = ucwords($marca_1);
+    
+    return $marca_2;
+    }
 
 
 function categorias($get){

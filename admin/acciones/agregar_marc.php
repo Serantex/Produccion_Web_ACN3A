@@ -8,7 +8,7 @@ $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $use
 $marc = new Marca($con);
 
 $nombre=ucwords($_POST["nombre"]);
-$cat_padre=$_POST["marc_padre"];
+$marc_padre=$_POST["marc_padre"];
 
 
 
@@ -16,5 +16,5 @@ if(empty($nombre)){
     header("Location:../index.php?seccion=marca_admi");
 }else{
     $marc->setMarca($nombre,$marc_padre);
-    header("location:../index.php?seccion=lista_marca");
+    header("location:../index.php?seccion=lista_marcas");
 }

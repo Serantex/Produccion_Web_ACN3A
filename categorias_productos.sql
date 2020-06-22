@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2020 a las 07:06:50
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Tiempo de generación: 22-06-2020 a las 04:24:34
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -124,21 +123,22 @@ INSERT INTO `contactos` (`id`, `nombre`, `apellido`, `telefono`, `email`, `comen
 CREATE TABLE `marcas` (
   `id_marca` int(250) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_bin NOT NULL,
-  `id_padre` int(11) NOT NULL
+  `id_padre` int(11) NOT NULL,
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `marcas`
 --
 
-INSERT INTO `marcas` (`id_marca`, `nombre`, `id_padre`) VALUES
-(1, 'Todas las Marcas', 0),
-(2, 'FunnyToys', 1),
-(3, 'DuffSico', 1),
-(4, 'mrSparkle', 1),
-(5, 'Mapel', 1),
-(6, 'Tonicos666', 1),
-(7, 'Krusty', 1);
+INSERT INTO `marcas` (`id_marca`, `nombre`, `id_padre`, `estado`) VALUES
+(1, 'Todas las Marcas', 0, 1),
+(2, 'FunnyToys', 1, 1),
+(3, 'DuffSico', 1, 1),
+(4, 'mrSparkle', 1, 1),
+(5, 'Mapel', 1, 1),
+(6, 'Tonicos666', 1, 1),
+(7, 'Krusty', 1, 1);
 
 -- --------------------------------------------------------
 

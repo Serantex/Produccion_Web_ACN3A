@@ -4,7 +4,7 @@
 ?>
 <div class="row mt-5 galeria">
         <div class="col-12">
-           <a href="index.php?seccion=categoria_admi" class="btn btn-primary btn-sm my-3 float-right">Nueva Marca</a>
+           <a href="index.php?seccion=marca_admi" class="btn btn-primary btn-sm my-3 float-right">Nueva Marca</a>
 
             <table class="table table-striped">
                 <thead>
@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
 <?php
-                    foreach($marc->getMarcas() as $row){
+                    foreach($marc->getMarcasAdmi() as $row){
                         $nombre=$row["nombre"];
                         $id=$row["id_marca"];
                         $estado=$row["estado"];

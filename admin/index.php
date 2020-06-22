@@ -8,6 +8,7 @@
     include_once("../class/classProductos.php");
     include_once("../class/classMarcas.php");
     include_once("../class/classComentarios.php");
+    include_once("../class/classSignUp.php");
     $seccion = $_GET["seccion"] ?? "lista_productos";
    
    

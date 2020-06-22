@@ -8,4 +8,5 @@ $secciones = ["home"=>"HOME",
 $secciones_admin =["lista_productos"=>"Productos",
                    "lista_categoriaP"=>"Categoria",
                    "lista_marcas"=>"Marcas",
-                   "comentarios"=>"Comentarios"];
+                   "comentarios"=>"Comentarios",
+                    "sign_up"=>"Sign up"];

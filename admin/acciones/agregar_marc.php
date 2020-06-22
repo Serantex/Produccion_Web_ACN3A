@@ -11,7 +11,6 @@ $nombre=ucwords($_POST["nombre"]);
 $marc_padre=$_POST["marc_padre"];
 
 
-
 if(empty($nombre)){
     header("Location:../index.php?seccion=marca_admi");
 }else{

@@ -47,19 +47,18 @@ function __construct($con){
     }
     
     function updateMarca($id,$nombre,$id_padre){
-        $sql="UPDATE marcas SET nombre='$nombre', id_padre='1' WHERE id_categoria=$id";
+        $sql="UPDATE marcas SET nombre='$nombre', id_padre='1' WHERE id_marca=$id";
         $sql= $this->con->prepare($sql);
         $sql->execute();
     }
     
     function setMarca($nombre,$idPadre){
-        $sql="INSERT INTO marcas (nombre,id_padre) VALUES (:nombre,'1')";
+        $sql="INSERT INTO marcas (nombre,id_padre) VALUES (:nombre, 1)";
         $sql = $this->con->prepare($sql);
-
+       
         $sql->bindParam(':nombre',$nombre,PDO::PARAM_STR, 20);
         $sql->bindParam(':id_padre',$idPadre,PDO::PARAM_INT, 20);
 
         $sql->execute();
     }
-
 }

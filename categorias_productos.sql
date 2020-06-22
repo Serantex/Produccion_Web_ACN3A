@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2020 a las 21:51:13
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.6
+-- Tiempo de generación: 22-06-2020 a las 07:06:50
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -142,41 +143,6 @@ INSERT INTO `marcas` (`id_marca`, `nombre`, `id_padre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perfil`
---
-
-CREATE TABLE `perfil` (
-  `id_perfil` int(11) NOT NULL,
-  `perfil` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `permisos`
---
-
-CREATE TABLE `permisos` (
-  `id_permisos` int(11) NOT NULL,
-  `permiso` varchar(50) COLLATE utf8_bin NOT NULL,
-  `codigo` varchar(50) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `permisos_perfil`
---
-
-CREATE TABLE `permisos_perfil` (
-  `id_relpp` int(11) NOT NULL,
-  `id_permisos` int(11) NOT NULL,
-  `id_perfil` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `productos`
 --
 
@@ -249,20 +215,19 @@ CREATE TABLE `usuarios` (
   `apellido` varchar(50) COLLATE utf8_bin NOT NULL,
   `usuario` varchar(50) COLLATE utf8_bin NOT NULL,
   `clave` varchar(50) COLLATE utf8_bin NOT NULL,
-  `id_perfil` int(11) NOT NULL
+  `permisos` varchar(11) COLLATE utf8_bin NOT NULL DEFAULT 'none',
+  `estado` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `usuario_perfil`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario_perfil` (
-  `id_rel` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `id_perfil` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `usuario`, `clave`, `permisos`, `estado`) VALUES
+(1, 'MicaL', 'Micaela', 'Lagana', '123', 'none', 1),
+(2, 'pepeA', 'pepe', 'argento', '123', 'none', 1),
+(3, 'aaaa', 'bbbb', 'cccc', '123', 'none', 1),
+(4, 'nombre', 'apellido', 'user', 'clave', 'none', 1);
 
 --
 -- Índices para tablas volcadas
@@ -293,24 +258,6 @@ ALTER TABLE `marcas`
   ADD PRIMARY KEY (`id_marca`);
 
 --
--- Indices de la tabla `perfil`
---
-ALTER TABLE `perfil`
-  ADD PRIMARY KEY (`id_perfil`);
-
---
--- Indices de la tabla `permisos`
---
-ALTER TABLE `permisos`
-  ADD PRIMARY KEY (`id_permisos`);
-
---
--- Indices de la tabla `permisos_perfil`
---
-ALTER TABLE `permisos_perfil`
-  ADD PRIMARY KEY (`id_relpp`);
-
---
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -321,12 +268,6 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
-
---
--- Indices de la tabla `usuario_perfil`
---
-ALTER TABLE `usuario_perfil`
-  ADD PRIMARY KEY (`id_rel`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -351,10 +292,22 @@ ALTER TABLE `contactos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `marcas`
+--
+ALTER TABLE `marcas`
+  MODIFY `id_marca` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

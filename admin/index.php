@@ -12,7 +12,7 @@
     include_once("../class/classUsuarios.php");
     $seccion = $_GET["seccion"] ?? "lista_productos";
    
-    if(logueado()):
+    if(!logueado()):
         $_SESSION["estado"] = "error";
         $_SESSION["mensaje"] = "Para explorar mas partes de la pagina registrate y en caso que tengas cuenta ingresar";
         header("Location:../index.php?seccion=log_in");
@@ -51,12 +51,16 @@
                     <li class="nav-item <?= $seccion == $link ? "active" : "" ?>">
                         <a class="nav-link" href="index.php?seccion=<?= $link; ?>"><?= $nombre_h; ?></a>
                     </li>
+                    
 <?php
                     endforeach;
 ?>
+
                 </ul>
                 <ul class="navbar-nav mr-0">
-                    <li class="nav-item">
+                <li class="nav-item">
+                        <a href="acciones/desconectar.php" class="nav-link">Salir</a>
+                    </li>
                 </ul>
             </div>
         </nav>

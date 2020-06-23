@@ -5,11 +5,12 @@ $user = new Usuario($con);
 
 if (isset($_GET["user"])) {
     $usuario = $_GET["user"];
-    $datos = $user->getByUsername($usuario);
+    foreach($user->getByUsername($usuario) as $datos){
     $nombre = $datos['nombre'];
     $apellido = $datos['apellido'];
     $permisos = $datos['permisos'];
     $id = $datos['id_usuario'];
+    }
 }
 ?>
 <div class="row justify-content-center">
@@ -24,12 +25,12 @@ if (isset($_GET["user"])) {
                     </div>
                     <div class="form-group">
                         <label for="nombre">Apellido</label>
-                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido del usuario" value="<?= isset($nombre) ? mostrar_nombre($nombre) : ""; ?>">
+                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido del usuario" value="<?= isset($nombre) ? mostrar_nombre($apellido) : ""; ?>">
                         <input type="hidden" name="nombre_actual" value="<?= mostrar_nombre($apellido) ?>">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Usuario</label>
-                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Nombre de usuario" value="<?= isset($usuario) ? mostrar_nombre($nombre) : ""; ?>">
+                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Nombre de usuario" value="<?= isset($usuario) ? mostrar_nombre($usuario) : ""; ?>">
                         <input type="hidden" name="nombre_actual" value="<?= mostrar_nombre($usuario) ?>">
                     </div>
                     <div class="form-group">

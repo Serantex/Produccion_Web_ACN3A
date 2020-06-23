@@ -40,7 +40,7 @@ function validar($area)
 function session_mensaje()
 {
     if (isset($_SESSION["estado"])) :
-        $clase = $_SESSION["estado"] == "error" ? "ligth" : "ligth";
+        $clase = $_SESSION["estado"] == "error" ? "danger" : "success";
 
         $mensaje = '<div class="container mt-4">
     <div class="row">

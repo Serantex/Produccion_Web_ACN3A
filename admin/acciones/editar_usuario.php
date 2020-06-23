@@ -11,9 +11,25 @@ $apellido=$_POST["apellido"];
 $usuario=$_POST["usuario"];
 $permisos=$_POST["permisos"];
 
-if(empty($usuario)){
+echo $permisos;
+
+foreach($user->getByUsername($usuario) as $us){
+    $nombre=$us["nombre"];
+    $apellido=$us["apellido"];
+    $clave=$us["clave"];
+    $usuario=$us["usuario"];
+    $id=$us["usuario"];
+}
+echo $nombre;
+echo $apellido;
+echo $clave;
+echo $usuario;
+echo $id;
+
+
+/*if(empty($usuario)){
     header("Location:../index.php?seccion=lista_usuarios=error&error=user_not_found");
 }else{
     $user->editUsuario($id, $nombre, $apellido, $usuario, $permisos);
     header("location:../index.php?seccion=lista_usuarios");
-}
+}*/

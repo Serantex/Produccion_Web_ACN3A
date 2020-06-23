@@ -19,6 +19,7 @@ if($aprobado==1){
 }else{
     $cat->activar($id);
 }
-
-header("Location:../index.php?seccion=lista_categoria");
+$_SESSION["estado"] = "exito";
+$_SESSION["mensaje"] = "se modifico el estado con exito";
+header("Location:../index.php?seccion=lista_categoriaP");
 

@@ -1,4 +1,6 @@
 <?php
+require_once("../config/config.php");
+require_once("../config/funciones.php");
 include_once("../class/classLogin.php");
 include_once("../config/mysql-login.php");
 

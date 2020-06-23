@@ -31,17 +31,24 @@ $imagen = $_FILES["imagen"];
 $nombre_img=cambiar_nombre($nombre);
 
 if($imagen["type"] != "image/png"):
+    $_SESSION["estado"] = "error";
+    $_SESSION["mensaje"] = "el tipo de imagen debe ser png";
     header("Location:../index.php?seccion=producto_admi");
     die();
 endif;
 
 if(empty($nombre) || empty($precio) || empty($descrip) || empty($cat) || empty($imagen)){
+    $_SESSION["estado"] = "error";
+    $_SESSION["mensaje"] = "todos los datos son obligatorios";
+
     header("Location:../index.php?seccion=producto_admi&error=datos");
     die();
 }else{
     $producto->setProducto($nombre,$cat,$sub_cat,$descrip,$precio,$stock,$novedad,$marca);
     move_uploaded_file($imagen["tmp_name"],PRODUCTOS . "/$nombre_img.png");
 }
+$_SESSION["estado"] = "exito";
+$_SESSION["mensaje"] = "se agrego el producto con exito";
 
 header("Location:../index.php?seccion=lista_productos&estado=ok&aviso=alta_producto");
 

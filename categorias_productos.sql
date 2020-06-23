@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2020 a las 01:06:21
+-- Tiempo de generación: 23-06-2020 a las 01:30:10
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -157,14 +157,14 @@ CREATE TABLE `productos` (
   `puntuacion` int(11) NOT NULL,
   `comentario` tinyint(1) NOT NULL,
   `destacado` tinyint(1) NOT NULL,
-  `Marca` int(11) NOT NULL
+  `marca` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`, `Marca`) VALUES
+INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`, `marca`) VALUES
 (1, 'Acido Sulfurico', 24, NULL, 'Ideal para calmar la sed', 10.5, 1, 0, 0, 0, 1),
 (2, 'Aprieta Y Traga', 7, 9, 'Salchichón completo del tío Lardo!', 10.5, 1, 0, 0, 1, 1),
 (3, 'Rosquilla', 7, 8, 'La rosca prohibida', 1, 1, 0, 0, 1, 2),

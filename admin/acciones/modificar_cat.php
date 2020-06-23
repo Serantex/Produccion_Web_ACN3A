@@ -19,5 +19,7 @@ if(empty($nombre)){
     header("Location:../index.php?seccion=categoria_admi");
 }else{
     $cat->updateCategoria($id_cate,$nombre,$cat_padre);
-    header("location:../index.php?seccion=lista_categoria");
+    $_SESSION["estado"] = "exito";
+    $_SESSION["mensaje"] = "se modifico con exito la categoria";
+    header("location:../index.php?seccion=lista_categoriaP");
 }

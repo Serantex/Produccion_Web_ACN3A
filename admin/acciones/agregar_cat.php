@@ -13,8 +13,14 @@ $cat_padre=$_POST["cat_padre"];
 
 
 if(empty($nombre)){
+    $_SESSION["estado"] = "error";
+    $_SESSION["mensaje"] = "el nombre es obligatorio";
+    
     header("Location:../index.php?seccion=categoria_admi");
 }else{
     $cat->setCategoria($nombre,$cat_padre);
-    header("location:../index.php?seccion=lista_categoria");
+    $_SESSION["estado"] = "exito";
+    $_SESSION["mensaje"] = "se agrego la categoria con exito";
+
+    header("location:../index.php?seccion=lista_categoriaP");
 }

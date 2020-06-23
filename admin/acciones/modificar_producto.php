@@ -36,7 +36,9 @@ $nombre_a=cambiar_nombre($nombre_actual);
 $nombre_nuevo=cambiar_nombre($nombre);
 
 if(empty($nombre) || empty($precio) || empty($descrip) || empty($cat) || empty($imagen)){
-    header("Location:../index.php?seccion=producto_admi&error=datos");
+    $_SESSION["estado"] = "error";
+    $_SESSION["mensaje"] = "todos los datos son obligatorios";
+    header("Location:../index.php?seccion=producto_admi&producto=$nombre_actual&error=datos");
     die();
 }else{
     $producto->updateProducto($id,$nombre,$cat,$sub_cat,$descrip,$precio,$stock,$novedad,$marca);
@@ -44,7 +46,9 @@ if(empty($nombre) || empty($precio) || empty($descrip) || empty($cat) || empty($
     if (!empty($_FILES["imagen"]) && $_FILES["imagen"]["size"] > 0):
 
         if($imagen["type"] != "image/png"):
-            header("Location:../index.php?seccion=producto_admi&error=tipo_img");
+            $_SESSION["estado"] = "error";
+            $_SESSION["mensaje"] = "la imagen debe ser png";
+            header("Location:../index.php?seccion=producto_admi&producto=$nombre_actual&error=tipo_img");
             die();
         endif;
 
@@ -57,6 +61,7 @@ if(empty($nombre) || empty($precio) || empty($descrip) || empty($cat) || empty($
     endif;
     rename(PRODUCTOS . "/$nombre_a.png", PRODUCTOS . "/$nombre_nuevo.png");
 }
-
+$_SESSION["estado"] = "exito";
+$_SESSION["mensaje"] = "se modifico el producto con exito";
 header("Location:../index.php?seccion=lista_productos&estado=ok&aviso=alta_producto");
 

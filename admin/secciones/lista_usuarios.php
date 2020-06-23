@@ -34,7 +34,7 @@ $user = new Usuario($con);
                         <td><?= $permisos ?></td>
                         <td>
                             <div class="btn-group">
-                                <a href="index.php?seccion=edit_user&user=<?= $usuario ?>" class="btn btn-success btn-sm">Editar</a>
+                                <a href="index.php?seccion=edit_user&user=<?= $usuario ?> " class="btn btn-success btn-sm">Editar</a>
                                 <form action="acciones/delete_user.php" method="post">
                                     <input type="hidden" name="id_user" value="<?= $id ?>">
                                     <button type="submit" class="btn btn-secondary btn-sm">delete</button>

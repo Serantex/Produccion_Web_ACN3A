@@ -19,6 +19,8 @@ if($aprobado==1){
 }else{
     $com->aprobar($id);
 }
+$_SESSION["estado"] = "exito";
+$_SESSION["mensaje"] = "se modifico el estado con exito";
 
 header("Location:../index.php?seccion=comentarios");
 

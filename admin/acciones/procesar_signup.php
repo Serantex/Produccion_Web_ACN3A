@@ -15,8 +15,13 @@ $password=$_POST["password"];
 
 if(empty($usuario)||empty($password)||empty($nombre)||empty($apellido)){
     header("Location:../index.php?seccion=sign_up&error=error_envio_datos"); 
+    $_SESSION["estado"] = "error";
+    $_SESSION["mensaje"] = "Todos los datos son obligatorios";
+
 
 }else{
    exec($signerUp->setUsuario($nombre,$apellido,$usuario,$password));
     header("Location:../../index.php?seccion=log_in&registro=usuario_registrado_con_exito");
+    $_SESSION["estado"] = "exito";
+    $_SESSION["mensaje"] = "el registro se completo con exito";
 }

@@ -118,7 +118,3 @@ function vacio($dato)
         return "selected";
     }
 }
-
-function edit_user($user)
-{
-}

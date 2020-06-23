@@ -9,18 +9,25 @@ function __construct($con){
 }
 
     function getUsuarios(){
-         $sql = "SELECT * FROM usuarios";
+        $usuarios = "SELECT id_usuario, nombre, apellido, usuario, permisos FROM usuarios WHERE estado = 1";
+        return $this->con->query($usuarios, PDO::FETCH_ASSOC);
+    }
+
+    function getByUsername($usuario){
+        $sql = "SELECT * FROM usuarios WHERE nombre=$usuario";
          return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 
-    function getUsuarioPorNombre($nombre){
-        $sql = "SELECT nombre FROM usuarios WHERE nombre=$nombre";
-         return $this->con->query($sql, PDO::FETCH_ASSOC);
+    function deleteUsuario($id){
+        $sql="UPDATE usuarios SET estado='0' WHERE id_usuario=$id"; 
+        $sql = $this->con->prepare($sql);
+        $sql->execute();
     }
 
-    function getIdUsuario($username){
-        $sql = "SELECT id_usuario FROM usuarios WHERE usuario=$username";
-         return $this->con->query($sql, PDO::FETCH_ASSOC);
+    function editUsuario($id, $nombre, $apellido, $usuario, $permisos){
+        $sql="UPDATE usuarios SET nombre=$nombre, apellido=$apellido, usuario=$usuario, permisos=$permisos WHERE id_usuario=$id"; 
+        $sql = $this->con->prepare($sql);
+        $sql->execute();
     }
 
 }

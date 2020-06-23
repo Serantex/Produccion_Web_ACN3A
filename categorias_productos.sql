@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2020 a las 05:37:34
+-- Tiempo de generación: 23-06-2020 a las 01:06:21
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -123,7 +123,7 @@ INSERT INTO `contactos` (`id`, `nombre`, `apellido`, `telefono`, `email`, `comen
 CREATE TABLE `marcas` (
   `id_marca` int(250) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_bin NOT NULL,
-  `id_padre` int(11) NOT NULL,
+  `id_padre` int(11) NOT NULL DEFAULT 1,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="col-8 justify-content-center">
-        <h1> REGISTRATE </h1>
+        <h1> ALTA USUARIO </h1>
 
         <form action="acciones/procesar_signup.php" method="post">
         <div class="form-group">

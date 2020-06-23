@@ -25,7 +25,7 @@ function __construct($con){
     }
 
     function editUsuario($id, $nombre, $apellido, $usuario, $permisos){
-        $sql="UPDATE usuarios SET nombre = $nombre, apellido=$apellido, usuario=$usuario, permisos=$permisos WHERE id_usuario=$id"; 
+        $sql="UPDATE usuarios SET nombre = '$nombre', apellido='$apellido', usuario='$usuario', permisos='$permisos' WHERE id_usuario=$id"; 
         $sql = $this->con->prepare($sql);
         $sql->execute();
     }

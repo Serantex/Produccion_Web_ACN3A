@@ -20,22 +20,22 @@ foreach ($user->getByUsername($usuario) as $row) {
                 <form action="acciones/editar_usuario.php" method="POST">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="<?= isset($nombre) ? $nombre : "Nombre" ; ?>" >
+                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="<?= isset($nombre) ? $nombre : "" ; ?>">
                         <input type="hidden" name="nombre_actual" value="<?= $nombre ?>">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Apellido</label>
-                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="<?= isset($apellido) ? $apellido : "Apellido" ?>" >
+                        <input type="text" class="form-control" name="apellido" id="apellido" placeholder="<?= isset($apellido) ? $apellido : "" ?>">
                         <input type="hidden" name="apellido_actual" value="<?= $apellido?>">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Usuario</label>
-                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder=<?= isset($usuario) ? $usuario : "user"?> >
+                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="<?= isset($usuario) ? $usuario : "" ?>">
                         <input type="hidden" name="usuario_actual" value="<?= $usuario ?>">
                     </div>
                     <div class="form-group">
                         <label for="nombre">Permisos</label>
-                        <input type="text" class="form-control" name="permisos" id="permisos" placeholder="<?= isset($permisos) ? $permisos : "permisos" ?>" >
+                        <input type="text" class="form-control" name="permisos" id="permisos" placeholder="<?= isset($permisos) ? $permisos : "" ?>">
                         <input type="hidden" name="permiso_actual" value="<?= $permisos ?>">
                     </div>
                     </div>

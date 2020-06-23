@@ -10,6 +10,7 @@ $nombre=$_POST["nombre"];
 $apellido=$_POST["apellido"];
 $usuario=$_POST["usuario"];
 $permisos=$_POST["permisos"];
+$id=$_POST["id_usuario"];
 
 if(empty($usuario)){
     header("Location:../index.php?seccion=lista_usuarios=error&error=user_not_found");

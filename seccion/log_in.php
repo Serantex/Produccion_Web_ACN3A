@@ -5,7 +5,7 @@
         <form action="config/procesar_login.php" method="post">
             <div class="form-group">
                 <label>Username</label>
-                <input class="form-control" placeholder="Enter username" name="nombre" id="nombre">
+                <input class="form-control" placeholder="Enter username" name="usuario" id="usuario">
             </div>
             <div class="form-group">
                 <label>Password</label>

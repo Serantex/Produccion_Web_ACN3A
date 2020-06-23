@@ -14,7 +14,7 @@ function __construct($con){
     }
 
     function getByUsername($usuario){
-        $sql = "SELECT * FROM usuarios WHERE nombre='$usuario'";
+        $sql = "SELECT id_usuario, nombre, apellido, permisos FROM usuarios WHERE usuario='$usuario'";
          return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 

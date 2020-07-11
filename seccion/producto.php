@@ -8,16 +8,19 @@ $com=new Comentario($con);
 
 $nombre_filtrado=mostrar_nombre($producto);
 foreach($product->getProducto($nombre_filtrado) as $articulo){
+    
+    $habi=$product->marCatProducto($articulo['categoria'],$articulo['sub_categoria'],$articulo['marca']);
+    if(!$habi){
 ?>
 
-<div class="container seccion fe">
+<div class="container seccion fe f">
     <div class="row">
-        <div class="col-4">
-                <div class="row">
+        <div class="col-lg-4 col-md-12">
+                <div class="row i">
                     <img src="img/productos/<?=$producto?>.png" alt="<?=$articulo["nombre"]?>">
                 </div>
         </div>
-        <div class="col-8">
+        <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <h2 class="fama"><?=utf8_encode($articulo["nombre"])?></h2>
                 </div>
@@ -97,5 +100,5 @@ foreach($product->getProducto($nombre_filtrado) as $articulo){
     </div>  
 </div>
 <?php
-}
+}}
 ?>

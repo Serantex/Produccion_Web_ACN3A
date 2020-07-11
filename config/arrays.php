@@ -10,4 +10,4 @@ $secciones_admin =["lista_productos"=>"Productos",
                    "lista_marcas"=>"Marcas",
                    "comentarios"=>"Comentarios",
                    "lista_usuarios"=>"Usuarios",
-                    "sign_up"=>"Sign up"];
+                   "perfiles"=>"Perfiles"];

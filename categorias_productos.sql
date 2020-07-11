@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2020 a las 01:30:10
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.6
+-- Tiempo de generación: 23-06-2020 a las 05:24:13
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -40,9 +41,9 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`, `estado`) VALUES
 (1, 'Todos los Productos', 0, 1),
-(2, 'Farmacos', 1, 1),
+(2, 'Farmacos2', 6, 1),
 (3, 'Disfraces', 1, 1),
-(4, 'Superheroes', 3, 0),
+(4, 'Superheroes', 3, 1),
 (5, 'Personajes', 3, 1),
 (6, 'Bebidas', 1, 1),
 (7, 'Alimentos', 1, 1),
@@ -55,7 +56,10 @@ INSERT INTO `categorias` (`id_categoria`, `nombre`, `id_padre`, `estado`) VALUES
 (21, 'Otros Disfraces', 3, 1),
 (22, 'Sin Alcohol', 6, 1),
 (23, 'Con Alcohol', 6, 1),
-(24, 'Otros Productos', 1, 1);
+(24, 'Otros Productos', 1, 1),
+(33, 'Chois', 1, 1),
+(34, 'Farmaco2', 1, 0),
+(35, 'Nueva Categoria', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -79,8 +83,8 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `producto`, `last_updated`, `aprobado`) VALUES
-(3, 'mica@example.com', '::1', 'asdfgfcgvhbjn', 2, 1, '2020-04-27', 1),
-(4, 'lagana.mcl@gmail.com', '::1', 'rdyjtdtfg', 5, 1, '2020-04-27', 1),
+(3, 'mica@example.com', '::1', 'asdfgfcgvhbjn', 2, 1, '2020-04-27', 0),
+(4, 'lagana.mcl@gmail.com', '::1', 'rdyjtdtfg', 5, 1, '2020-04-27', 0),
 (5, '2@d', '::1', 'sdvsdv', 1, 1, '2020-04-28', 1),
 (6, '2@d', '::1', 'muy cara pero deliciosa ', 5, 4, '2020-04-29', 1),
 (7, 'lautaro.serantes@davinci.edu.a', '::1', 'hola', 5, 1, '2020-04-29', 1),
@@ -88,7 +92,7 @@ INSERT INTO `comentarios` (`id`, `mail`, `ip`, `comentario`, `clasificacion`, `p
 (9, 'lautaro.serantes@davinci.edu.a', '::1', 'fdasf', 2, 2, '2020-04-29', 1),
 (10, 'lautaro.serantes@davinci.edu.a', '::1', 'afsaf', 2, 2, '2020-04-29', 1),
 (11, 'a@gir.com', '::1', 'afasf', 4, 2, '2020-04-29', 1),
-(16, 'lautaroserantes@hotmail.com', '::1', 'dasdasd', 3, 1, '2020-06-20', 0);
+(16, 'lautaroserantes@hotmail.com', '::1', 'dasdasd', 3, 1, '2020-06-20', 1);
 
 -- --------------------------------------------------------
 
@@ -132,13 +136,16 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`id_marca`, `nombre`, `id_padre`, `estado`) VALUES
-(1, 'Todas las Marcas', 0, 1),
-(2, 'FunnyToys', 1, 1),
+(1, 'Todas las Marcas', 0, 0),
+(2, 'FunnyToys ', 1, 1),
 (3, 'DuffSico', 1, 1),
 (4, 'mrSparkle', 1, 1),
 (5, 'Mapel', 1, 1),
 (6, 'Tonicos666', 1, 1),
-(7, 'Krusty', 1, 1);
+(7, 'Krusty', 1, 1),
+(8, 'AlterBalta', 1, 0),
+(9, 'Gracias', 1, 0),
+(10, 'Pepsico', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -165,7 +172,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripcion`, `precio`, `stock`, `puntuacion`, `comentario`, `destacado`, `marca`) VALUES
-(1, 'Acido Sulfurico', 24, NULL, 'Ideal para calmar la sed', 10.5, 1, 0, 0, 0, 1),
+(1, 'Acido Sulfurico', 24, 2, 'Ideal para calmar la sed', 10, 1, 0, 0, 1, 7),
 (2, 'Aprieta Y Traga', 7, 9, 'Salchichón completo del tío Lardo!', 10.5, 1, 0, 0, 1, 1),
 (3, 'Rosquilla', 7, 8, 'La rosca prohibida', 1, 1, 0, 0, 1, 2),
 (4, 'Duff', 6, 23, 'Mmmm Cerveza!', 545, 1, 0, 0, 1, 3),
@@ -201,7 +208,10 @@ INSERT INTO `productos` (`id`, `nombre`, `categoria`, `sub_categoria`, `descripc
 (34, 'Disfraz Bartman', 3, 4, 'Salvando la ciudad de Sprinfield', 234, 1, 0, 0, 1, 0),
 (35, 'Disfraz Hombre Radioactivo', 3, 4, 'Soy el hombre radioactivo', 263, 1, 0, 0, 0, 0),
 (36, 'Disfraz Lisa', 3, 5, 'Premio por no tener ayuda de los padres', 76, 1, 0, 0, 1, 0),
-(37, 'Stacy Vaquera', 10, 11, 'Olee!', 70, 1, 0, 0, 1, 0);
+(37, 'Stacy Vaquera', 10, 11, 'Olee!', 70, 1, 0, 0, 1, 0),
+(38, 'Choi', 7, 9, 'negro y pingon', 2, 0, 0, 0, 0, 2),
+(39, 'Nuevo', 3, 8, 'nuevo', 123, 1, 0, 0, 1, 4),
+(40, 'Aaaa', 6, 23, 'asdasd', 12, 1, 0, 0, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -224,10 +234,13 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `usuario`, `clave`, `permisos`, `estado`) VALUES
-(1, 'MicaL', 'Micaela', 'Lagana', '123', 'none', 1),
+(1, 'mica', 'mica', 'lagana', '123', '1', 1),
 (2, 'pepeA', 'pepe', 'argento', '123', 'none', 1),
 (3, 'aaaa', 'bbbb', 'cccc', '123', 'none', 1),
-(4, 'nombre', 'apellido', 'user', 'clave', 'none', 1);
+(4, 'nombre', 'apellido', 'user', 'clave', 'none', 0),
+(5, 'admin', 'admin', 'admin', 'admin', 'none', 1),
+(6, 'adas', 'adasd', 'asdas', '123', 'none', 0),
+(7, 'Lautaro', 'serantes', 'serantex', '123456', '1', 1);
 
 --
 -- Índices para tablas volcadas
@@ -277,7 +290,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
@@ -295,19 +308,19 @@ ALTER TABLE `contactos`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_marca` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

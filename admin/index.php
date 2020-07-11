@@ -10,6 +10,7 @@
     include_once("../class/classComentarios.php");
     include_once("../class/classSignUp.php");
     include_once("../class/classUsuarios.php");
+    include_once("../class/classPerfiles.php");
     $seccion = $_GET["seccion"] ?? "lista_productos";
    
     if(!logueado()):

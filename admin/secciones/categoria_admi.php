@@ -1,4 +1,7 @@
 <?php
+ if( !in_array('amb.cat',$_SESSION['permiso']['permisos'])){ 
+    header('Location: index.php');
+}
 $con = new PDO('mysql:host=' . $hostname . ';port=' . $port . ';dbname=' . $database, $username, $password);
 $cat = new Categoria($con);
 

@@ -123,6 +123,8 @@ function comp($nombre, $nombre2)
         return isset($_SESSION["usuario"]);
     }
 
-function edit_user($user)
-{
+function compper($id1,$id2){
+    if($id1==$id2) {
+        echo 'selected="selected"';
+    }
 }

@@ -14,6 +14,10 @@
         $pro=$_GET["producto"];
     }
 
+    if( !in_array('com',$_SESSION['permiso']['permisos'])){ 
+        header('Location: index.php');
+    }
+
 ?>
 
 <div class="row mt-5 galeria">

@@ -6,9 +6,9 @@ var $con;
 function __construct($con){
     $this->con=$con;
 }
-
+//revisar 
     function getCategorias($idPadre = 0){
-         $sql = "SELECT * FROM categorias WHERE id_padre=".$idPadre;
+         $sql = "SELECT * FROM categorias WHERE id_padre=$idPadre and estado=1";
          return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 

@@ -1,5 +1,8 @@
 <?php
- 
+     if( !in_array('amb.prod',$_SESSION['permiso']['permisos'])){ 
+        header('Location: index.php');
+    }
+
     $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
     $productos=new Producto($con);
     $cat = new Categoria($con);
@@ -82,7 +85,7 @@
 <?php
                                             }
 ?>
-                                            <option value="NULL" <?=isset($nombre) ? vacio($sub_cat1) : '';?> >Ninguno</option>
+                                            <option value="1" <?=isset($nombre) ? vacio($sub_cat1) : '';?> >Ninguno</option>
                                         </select>
 
                                     </div>
@@ -101,14 +104,14 @@
 <?php
                                             }
 ?>
-                                            <option value="NULL" <?=isset($nombre) ? vacio($p_marca) : '';?> >Ninguno</option>
+                                            <option value="1" <?=isset($nombre) ? vacio($p_marca) : '';?> >Ninguno</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" id="Stock" name="stock" <?=isset($nombre) ? cheked($stock): '';?>>
-                                            <label class="custom-control-label" for="Stock">Stock</label>
+                                            <label class="custom-control-label" for="Stock">Estado</label>
                                         </div>
                                         <div class="custom-control custom-switch">
                                             <input type="checkbox" class="custom-control-input" id="Novedad" name="novedad" <?=isset($nombre) ? cheked($novedad):''?>>

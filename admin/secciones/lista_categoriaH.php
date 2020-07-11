@@ -1,6 +1,10 @@
 <?php
     $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
     $cat = new Categoria($con);
+
+    if( !in_array('amb.cat',$_SESSION['permiso']['permisos'])){ 
+        header('Location: index.php');
+    }
 ?>
 <div class="row mt-5 galeria">
         <div class="col-12">

@@ -47,7 +47,7 @@ class Producto
 
     function getFiltrado($filter, $cat, $marc){
         if (empty($filter)) {
-            if ($cat != 1) {
+            if ($cat !=1) {
                 if ($marc != 1) {
                     $filtro = "SELECT * FROM productos WHERE stock=1 AND marca=$marc AND (sub_categoria=$cat OR categoria=$cat)";
                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
@@ -55,7 +55,7 @@ class Producto
                     $filtro = "SELECT * FROM productos WHERE (sub_categoria=$cat OR categoria=$cat) AND stock=1";
                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
                 }
-            } else {
+            }else{
                 if ($marc != 1) {
                     $filtro = "SELECT * FROM productos WHERE marca=$marc AND stock=1";
                     return $this->con->query($filtro, PDO::FETCH_ASSOC);
@@ -197,6 +197,32 @@ class Producto
             $producto->execute();
         }
         
-    
+        function marCatProducto($id_cat,$id_scat,$id_mar){
+
+            $cat="SELECT * FROM categorias WHERE id_categoria=$id_cat";
+            $sqlc=$this->con->prepare($cat);
+            $sqlc->execute();
+            
+            $rowcat = $sqlc->fetch(PDO::FETCH_ASSOC);
+            $rowcat["estado"];
+
+            $scat="SELECT * FROM categorias WHERE id_categoria=$id_scat";
+            $sqlsc=$this->con->prepare($scat);
+            $sqlsc->execute();
+            
+            $rowscat = $sqlsc->fetch(PDO::FETCH_ASSOC);
+            $rowscat["estado"];
+
+            $mar="SELECT * FROM marcas WHERE id_marca=$id_mar";
+            $sqlm=$this->con->prepare($mar);
+            $sqlm->execute();
+            
+            $rowmar= $sqlm->fetch(PDO::FETCH_ASSOC);
+            $rowmar["estado"];
+
+            if ($rowmar["estado"]==0 || $rowscat["estado"]==0 || $rowcat["estado"]==0) {
+                return true;
+            }
+        }
 
 }

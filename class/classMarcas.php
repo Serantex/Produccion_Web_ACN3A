@@ -15,7 +15,7 @@ function __construct($con){
 
    
     function getMarca($idPadre = 0){
-         $sql = "SELECT * FROM marcas WHERE id_padre=".$idPadre;
+         $sql = "SELECT * FROM marcas WHERE id_padre=$idPadre AND estado=1" ;
          return $this->con->query($sql, PDO::FETCH_ASSOC);
     }
 
@@ -40,6 +40,8 @@ function __construct($con){
         $product="SELECT * FROM marcas WHERE nombre='$name'";
         return $this->con->query($product, PDO::FETCH_ASSOC);
     }
+
+
     function activar($id){
         $sql="UPDATE  marcas SET estado='1' WHERE id_marca=$id"; 
         $sql = $this->con->prepare($sql);
@@ -52,8 +54,8 @@ function __construct($con){
         $sql->execute();
     }
     
-    function updateMarca($id,$nombre,$id_padre){
-        $sql="UPDATE marcas SET nombre='$nombre', id_padre='1' WHERE id_marca=$id";
+    function updateMarca($id,$nombre){
+        $sql="UPDATE marcas SET nombre='$nombre' WHERE id_marca=$id";
         $sql= $this->con->prepare($sql);
         $sql->execute();
     }

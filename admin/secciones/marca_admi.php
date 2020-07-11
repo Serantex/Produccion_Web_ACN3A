@@ -1,4 +1,8 @@
 <?php
+if( !in_array('amb.mar',$_SESSION['permiso']['permisos'])){ 
+    header('Location: index.php');
+}
+
     $con = new PDO('mysql:host='.$hostname.';port='.$port.';dbname='.$database, $username, $password);
      $marc = new Marca($con);
 
@@ -24,11 +28,7 @@
                                         <label for="nombre">Nombre</label>
                                         <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la Marca" value="<?= isset($nombre) ? mostrar_nombre($nombre) : ""; ?>">
                                         <input type="hidden" name="nombre_actual" value="<?= mostrar_nombre($nombre) ?>">
-                                    </div>
-                                    
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="tipo_editar" id="arma" value="arma" readonly>
+                                        <input type="hidden" name="marc_padre" value="<?= $id_p?>">
                                     </div>
                                     <button type="submit" class="btn btn-primary"><?=$boton;?></button>
                                 </form>

@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="col-8 justify-content-center">
+    <div class="col-8 justify-content-center f">
         <h1> INICIA SESIÓN </h1>
 
         <form action="config/procesar_login.php" method="post">

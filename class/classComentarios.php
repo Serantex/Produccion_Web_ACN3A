@@ -26,8 +26,13 @@ class Comentario{
         return $this->con->query($com, PDO::FETCH_ASSOC);
     }
 
+    function getComentariosProductos($id,$ip){
+        $com="SELECT * FROM comentarios WHERE id=(SELECT MAX(id) FROM comentarios) AND producto =$id AND ip='$ip'";
+        return $this->con->query($com, PDO::FETCH_ASSOC);
+    }
+
     function validateUpdateComment($id, $current_ip){
-        $comentarios = $this->getComentarioProducto($id);
+        $comentarios = $this->getComentariosProductos($id,$current_ip);
         $date = strtotime(date('Y-m-d'));
         $isValid = true;
 
@@ -36,7 +41,7 @@ class Comentario{
             $fecha = strtotime($comentario['last_updated']);
             $timeRange = $date - $fecha;
 
-            if($timeRange < 86400 && $ip == $current_ip) {
+            if($timeRange < 86400) {
             $isValid = false;
                 break;
             }

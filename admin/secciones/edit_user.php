@@ -1,7 +1,11 @@
 <?php
 $con = new PDO('mysql:host=' . $hostname . ';port=' . $port . ';dbname=' . $database, $username, $password);
 $user = new Usuario($con);
+$perfil=new Perfil($con);
 
+if( !in_array('mod.user',$_SESSION['permiso']['permisos'])){ 
+    header('Location: index.php');
+}
 
 if (isset($_GET["user"])) {
     $usuario = $_GET["user"];  
@@ -10,7 +14,6 @@ foreach ($user->getByUsername($usuario) as $row) {
     $id = $row['id_usuario'];
     $nombre = $row['nombre'];
     $apellido = $row['apellido'];
-    $permisos = $row['permisos'];
 }
 ?>
 <div class="row justify-content-center">
@@ -34,10 +37,26 @@ foreach ($user->getByUsername($usuario) as $row) {
                         <input type="hidden" name="usuario_actual" value="<?= $usuario ?>">
                     </div>
                     <div class="form-group">
-                        <label for="nombre">Permisos</label>
-                        <input type="text" class="form-control" name="permisos" id="permisos" placeholder="<?= isset($permisos) ? $permisos : "" ?>">
-                        <input type="hidden" name="permiso_actual" value="<?= $permisos ?>">
-                    </div>
+                            <label for="nombre">Perfiles</label>
+                                <select name="perfiles[]" id="perfiles" multiple='multiple' >
+                                    <?php  
+                                        foreach($perfil->getList() as $perfi){
+                                    ?>
+                                            <option value=<?=$perfi["id_perfil"]?>
+                                    <?php 
+                                        if(isset($_GET["user"])){
+                                                foreach($perfil->getUsuarioPerfil($id) as $per){
+                                                    $id2=$per["id_perfil"];
+                                                    compper($perfi["id_perfil"], $id2);
+                                                }
+                                        }
+                                    ?>
+                                    ><?=$perfi['nombre']?></option>
+                                    <?php
+                                         }
+                                    ?>
+                                </select>
+            </div> 
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="id_usuario" id="id_usuario" value="<?=$id?>" readonly>

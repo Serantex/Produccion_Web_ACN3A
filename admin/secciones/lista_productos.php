@@ -22,13 +22,13 @@
 ?>      
                  </select>
             </div>
-                <button type="submit" class="btn btn-primary">Filtrar</button>
+                <button type="submit" class="btn btn-primary mb-3">Filtrar</button>
         </div>
     </form>
-        <div class="col-12">
+        <div class="col-lg-12">
             <a href="index.php?seccion=producto_admi" class="btn btn-primary btn-sm my-3 float-right">Nuevo Producto</a>
 
-            <table class="table table-striped">
+            <table class="table table-striped listap">
                 <thead>
                     <tr>    
                         <th>N°</th>
@@ -39,7 +39,7 @@
                         <th>Categoria</th>
                         <th>SubCategoria</th>
                         <th>Marca</th>
-                        <th>Stock</th>
+                        <th>Estado</th>
                         <th>Destacado</th>
                         <th>Acciones</th>
                     </tr>
@@ -61,9 +61,9 @@
                             $marc=$product["marca"];
 
                             if($product["stock"]==1){
-                                $stock="si";
+                                $stock="activo";
                             }else{
-                                $stock="no";
+                                $stock="desactivo";
                             }
 
                             if($subcat==null){
@@ -76,7 +76,7 @@
                                 $destacado="no";
                             }
 
-                            if($marc==null){
+                            if($marc==0){
                                 $marca="sin marca";
                             }    
 
@@ -149,7 +149,7 @@
                                 $destacado="no";
                             }  
 
-                            if($marc==null){
+                            if($marc==0){
                                 $marca="sin marca";
                             }    
 
@@ -187,8 +187,14 @@
                         <td><?=$destacado?></td>
                         <td>
                             <div class="btn-group">
+                            <?php
+                                if(in_array('amb.prod',$_SESSION['permiso']['permisos'])){
+                            ?>
                                 <a href="index.php?seccion=producto_admi&producto=<?=$nombre?>" class="btn btn-success btn-sm">Editar</a>
-                                <a href="index.php?seccion=comentarios&producto=<?=$id?>" class="btn btn-success btn-sm">Comentarios</a>                            
+                                <a href="index.php?seccion=comentarios&producto=<?=$id?>" class="btn btn-success btn-sm">Comentarios</a> 
+                            <?php
+                                }
+                            ?>                           
                             </div>
                         </td>
                     </tr>

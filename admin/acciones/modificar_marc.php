@@ -11,13 +11,14 @@ $nombre=ucwords($_POST["nombre"]);
 $marc_padre=$_POST["marc_padre"];
 $nombre_actual=$_POST["nombre_actual"];
 
-foreach($marc->getMarcaEdit($nombre_actual)as $marcs){
-    $id_marca=$marcs["id_marca"];
+foreach($marc->getMarcaEdit($nombre_actual)as $cats){
+    $id_cate=$cats["id_marca"];
 }
 
 if(empty($nombre)){
     header("Location:../index.php?seccion=marca_admi");
 }else{
-    $marc->updateMarca($id_marca,$nombre,$marc_padre);
+echo $id_cate;
+    $marc->updateMarca($id_cate,$nombre);
     header("location:../index.php?seccion=lista_marcas");
 }
